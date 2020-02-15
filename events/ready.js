@@ -8,4 +8,5 @@ module.exports = (client) => {
     client.generateInvite(["ADMINISTRATOR"]).then(link =>{
         console.log(cyan('Invite:'), link);
     });
+    global.cooldowns={}
 };
