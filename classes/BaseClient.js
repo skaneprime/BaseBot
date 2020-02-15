@@ -6,6 +6,7 @@ module.exports = class BaseClient extends Client {
         this.prefix = global.config.client.prefix;
 
         this.commands = new Collection();
+        this.cooldowns = {};
     };
 
     loadCommand(name) {
