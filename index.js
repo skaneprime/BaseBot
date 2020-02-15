@@ -2,7 +2,6 @@ const fs = require('fs');
 require('./SysLoader')(fs);
 let BaseClient = require('./classes/BaseClient.js');
 global.client = new BaseClient();
-global.cooldown = {};
 run(global.client);
 
 async function run(client) {
