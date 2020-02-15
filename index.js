@@ -11,5 +11,5 @@ async function run(client) {
 };
 
 /* 
-todo: 1) Cooldown 2) Вернуть категории 3) Динамичный Хелп
+toado: 1) Cooldown 2) Вернуть категории 3) Динамичный Хелп
 */
