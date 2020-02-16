@@ -5,7 +5,7 @@ module.exports = (client, params) => {
     const cmd = args.shift().toLowerCase();
 //  console.log(client.commands.get(cmd) || client.commands.find(cmdClass => cmdClass.aliases.includes(cmd)));
     let command = client.commands.get(cmd) || client.commands.find(cmdClass => cmdClass.aliases.includes(cmd));
-    
+    if(!command) return;
     // guildOnly, allowed_guilds
     if(message.channel.type === "dm" && command.guildOnly == "true") return message.reply(`Команда ${cmd} доступа только на сервере!!!`);
     if(!command.allowed_guilds.includes(message.guild.id) && command.allowed_guilds.length > 0) return;    if(!client.cooldowns[message.author.id]) client.cooldowns[message.author.id]={}
