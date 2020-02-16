@@ -1,8 +1,9 @@
+chalk = require('chalk');
 module.exports = (fs) => {
     fs.readdirSync('./system').forEach(initSys);
 
     function initSys(filename) {
-        console.log(`[SYS] ${filename} loaded`);
+        global.cmd.sys(`${chalk.bold.red(`[${filename.split('.')[0]}]`)} Loading...`);
         require(`./system/${filename}`);
     };
 }; 

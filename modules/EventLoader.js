@@ -1,8 +1,18 @@
 const fs = require('fs');
+global.cmd.mod(`${chalk.bold.red(`[EventLoader]`)} ${chalk.bold.white(`Successfully Loaded`)}`);
 module.exports = (client) => {
-    fs.readdirSync('./events').forEach(ClientOnEvent); // Перебор все ивентов из конфига events.json
+    fs.readdirSync('./events').forEach(dir => {
+        if(dir === 'client') 
+            fs.readdirSync('./events/client').forEach(ClientOnEvent);          
+        else if (dir === 'process')
+            fs.readdirSync('./events/process').forEach(ProcessOnEvent); 
+    }); // Перебор все ивентов из конфига events.json
     
     function ClientOnEvent(event) {
-        client.on(event.split('.')[0], (...params) => require(`../events/${event}`)(client, params));
+        client.on(event.split('.')[0], (...params) => require(`../events/client/${event}`)(client, params)); // run event on client.event
+    };
+
+    function ProcessOnEvent(event) {
+        process.on(event.split('.')[0], (...params) => require(`../events/process/${event}`)(client, params)); // run event on client.event
     };
 };

@@ -1,15 +1,20 @@
-const fs = require('fs');
-require('./SysLoader')(fs);
-let BaseClient = require('./classes/BaseClient.js');
-global.client = new BaseClient();
+global.cmd = require('./tools/console');
 
-run(global.client);
+global.settings = {
+    "debug": false, // enable debug mode
+    "warn": true, // enable warns
+    "error": true // enable errors
+}
 
-async function run(client) {
-    client.login(global.config.client.token)
-    require('./ModLoader')(client, fs);
+const fs = require('fs'); // require('fs');
+require('./SysLoader')(fs); // load SystemModule
+
+let BaseClient = require('./classes/BaseClient.js');  // require BaseClient
+global.client = new BaseClient(); // create new global.client with BaseClient()
+
+run(global.client); // run bot with global.client argument
+
+async function run(client) { 
+    client.login(global.config.client.token) // bot login
+    require('./ModLoader')(client, fs); // load modules
 };
-
-/* 
-todo: 1) Cooldown 2) Вернуть категории 3) Динамичный Хелп
-*/

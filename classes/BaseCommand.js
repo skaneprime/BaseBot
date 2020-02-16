@@ -6,8 +6,13 @@ module.exports = class BaseCommand {
         this.cache = data.cache || {}; // Не нужный кеш
         this.usage = data.usage || "Не указано"; // Для комманды help
         this.description = data.description || "Не указано"; // Описание комманды
-        this.guildOnly = data.guildOnly || true; // Полезно :3
+        this.guildOnly = data.guildOnly || "true"; // Полезно :3
         this.allowed_guilds = data.allowed_guilds || []; // Полезно
         this.cooldown = data.cooldown || 0; // Колдаун
+
+        this.execute = (client, message, args, ...params) => {
+            message.reply('Команда не имеет функционала.');
+        };
     };
+
 };

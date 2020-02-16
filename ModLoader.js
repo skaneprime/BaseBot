@@ -1,8 +1,8 @@
+chalk = require('chalk');
 module.exports = (client, fs) => {
-    fs.readdirSync('./modules').forEach(initMod);
+    fs.readdirSync('./modules').forEach(initMod); // fetch modules folder, then run module.
 
     function initMod(filename) {
-        console.log(`[MOD] ${filename} loaded`);
         require(`./modules/${filename}`)(client, fs);
     };
 }; 
