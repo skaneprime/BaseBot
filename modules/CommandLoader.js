@@ -1,11 +1,13 @@
 module.exports = (client, fs) => {
-    fs.readdirSync('./commands').forEach(directories => { // fetch directories from ./commands
-        if(directories === "example.form") return; // if example.form return;
-        fs.readdirSync(`./commands/${directories}`).forEach(file => LoadFile(file, directories)); // run command from directory
+    global.cmd.mod(`${chalk.bold.red(`[CommandLoader]`)} ${chalk.bold.white(`Successfully Loaded`)}`);
+    fs.readdirSync('./commands').forEach(result => {
+        if(result == "example.form") return;
+        if(fs.lstatSync(`./commands/${result}`).isFile()) {
+            client.loadCommand(result.split(".")[0]);
+        } else {
+            fs.readdirSync(`./commands/${result}`).forEach(file => {
+                client.loadCommand(file.split(".")[0], result);
+            });
+        };
     });
-
-    function LoadFile(filename, dir) {
-        if(filename.split('.')[1] != "js") return; // if file extension != js return;
-        client.loadCommand(filename.split(".")[0], dir); // loadcommand
-    };
 };

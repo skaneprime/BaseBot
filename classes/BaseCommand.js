@@ -9,5 +9,10 @@ module.exports = class BaseCommand {
         this.guildOnly = data.guildOnly || "true"; // Полезно :3
         this.allowed_guilds = data.allowed_guilds || []; // Полезно
         this.cooldown = data.cooldown || 0; // Колдаун
+
+        this.execute = (client, message, args, ...params) => {
+            message.reply('Команда не имеет функционала.');
+        };
     };
+
 };
