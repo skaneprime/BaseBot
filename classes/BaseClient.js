@@ -9,9 +9,9 @@ module.exports = class BaseClient extends Client {
         this.cooldowns = {};
     };
 
-    loadCommand(name) {
+    loadCommand(name, dir) {
         try {
-            const cmdClass = require(`./../commands/${name}.js`);
+            const cmdClass = require(`./../commands/${dir}/${name}.js`);
             this.commands.set(name, new cmdClass);
         } catch (error) {
             console.log(error)

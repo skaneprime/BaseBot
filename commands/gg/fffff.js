@@ -1,4 +1,4 @@
-let BaseCommand = require('./../classes/BaseCommand');
+let BaseCommand = require('./../../classes/BaseCommand');
 module.exports = class TestCmd extends BaseCommand {
     constructor() {
         super({
@@ -9,7 +9,7 @@ module.exports = class TestCmd extends BaseCommand {
             description: "Тестовая команда",
             guildOnly: true,
             allowed_guilds: [],
-            cooldown: 0
+            cooldown: 5
         });
 
         this.execute = (client, message, args, ...params) => {

@@ -1,4 +1,4 @@
-let BaseCommand = require('../classes/BaseCommand');
+let BaseCommand = require('../../classes/BaseCommand');
 module.exports = class TestCmd extends BaseCommand {
     constructor() {
         super({
