@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%=title %></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <%- include("partials/main.ejs") %>
+    <h1><%=title %> в EJS</h1>
+
+    <% if(emailsVisible) {%>
+        <h3>Электронные адреса</h3>
+        <ul>
+            <% for(var i=0; i<emails.length;i++) {%>
+                <li><%=emails[i] %></li>
+            <%} %>
+        </ul>
+    <% }else {%>
+        <h3>Электронный адрес отсутствует</h3>
+    <%} %>
+    <p>Телефон: <%=phone %></p>
+
+    <%- include("partials/footer.ejs") %>
+</body>
+<html>

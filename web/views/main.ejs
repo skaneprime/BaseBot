@@ -1,0 +1,29 @@
+<html>
+<head>
+
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+        <link href="css/css.css" rel="stylesheet">
+    <style>
+    </style>
+    
+
+</head>
+
+
+<body>
+<center>
+    <h1>CACHE STATUS: </h1>
+
+    <%-    
+    const ascii = require("ascii-table");
+    const table = new ascii().setHeading("Command","Load status");
+    
+    global.client.commands.map(cmd => '' + '<h6>' + cmd.name + '</h6>' + ' ' + '<b>' + table.addRow(`${cmd.name} | ${cmd.cache}`, '✔ -> loaded!'); + '</b>' + '').join('<br />'); 
+    
+    table.toString(); 
+    %>
+
+</center>
+    </body>
+
+</html>
