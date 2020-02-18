@@ -1,6 +1,6 @@
 let BaseCommand = require('../../classes/BaseCommand');
 const Discord = require('discord.js');
-module.exports = class TestCmd extends BaseCommand {
+module.exports = class extends BaseCommand {
     constructor() {
         super({
             name: "help",
@@ -8,7 +8,7 @@ module.exports = class TestCmd extends BaseCommand {
             category: "main",
             usage: "Без аргументов",
             description: "Тестовая команда",
-            guildOnly: "true",
+            guildOnly: true,
             allowed_guilds: [],
             cooldown: 6
         });

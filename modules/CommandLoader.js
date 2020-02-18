@@ -1,5 +1,5 @@
 module.exports = (client, fs) => {
-    global.cmd.mod(`${chalk.bold.red(`[CommandLoader]`)} ${chalk.bold.white(`Successfully Loaded`)}`);
+    cmd.mod(`${chalk.bold.red(`[CommandLoader]`)} ${chalk.bold.white(`Successfully Loaded`)}`);
     fs.readdirSync('./commands').forEach(result => {
         if(result == "example.form") return;
         if(fs.lstatSync(`./commands/${result}`).isFile()) {

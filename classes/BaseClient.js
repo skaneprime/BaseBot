@@ -17,7 +17,7 @@ module.exports = class BaseClient extends Client {
                 this.commands.set(name, new cmdClass());
             } else {
                 const cmdClass = require(`./../commands/${name}.js`); 
-                this.commands.set(name, new cmdClass()); // push cmdclass in client.commands
+                this.commands.set(name, new cmdClass()); // push cmdClass in client.commands
             }
         } catch (error) { 
             console.log(error) // on error

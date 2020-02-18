@@ -3,7 +3,7 @@ module.exports = (fs) => {
     fs.readdirSync('./system').forEach(initSys);
 
     function initSys(filename) {
-        global.cmd.sys(`${chalk.bold.red(`[${filename.split('.')[0]}]`)} Loading...`);
+        cmd.sys(`${chalk.bold.blue(`Initializing ${filename.split('.')[0]}`)}`);
         require(`./system/${filename}`);
     };
 
