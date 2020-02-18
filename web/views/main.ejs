@@ -5,7 +5,7 @@
         <link href="css/css.css" rel="stylesheet">
     <style>
     </style>
-    
+    <script src="https://github.com/sorensen/ascii-table/blob/master/ascii-table.min.js"></script>
 
 </head>
 
@@ -14,15 +14,15 @@
 <center>
     <h1>CACHE STATUS: </h1>
 
-    <%-    
-    const ascii = require("ascii-table");
-    const table = new ascii().setHeading("Command","Load status");
-    
-    global.client.commands.map(cmd => '' + '<h6>' + cmd.name + '</h6>' + ' ' + '<b>' + table.addRow(`${cmd.name} | ${cmd.cache}`, '✔ -> loaded!'); + '</b>' + '').join('<br />'); 
-    
-    table.toString(); 
-    %>
+        <% 
+    global.client.commands.map(cmd => { 
+        var table = new window.AsciiTable('A Title') %>
+        table.setHeading('name', 'cache')
+        table.addRow(cmd.name, JSON.stringify(cmd.cache))
+        <h2><%= table.toString() %></h2>
+    <% }) %>
 
+    <%= '1233' %> 
 </center>
     </body>
 

@@ -50,7 +50,8 @@ function createConfFolder() {
 function createConfig() {
     configs.forEach(config => {
         if(!fs.existsSync(`./configurations/${config.name}`)) {   
-            console.log(require('chalk').red.bold('[СonfigManager]'), `${config.name}.json created! Please set up it!`);
+            if(!settings.MinimalMode)
+                 console.log(require('chalk').red.bold('[СonfigManager]'), `${config.name}.json created! Please set up it!`);
             fs.writeFileSync(`./configuration/${config.name}.json`, `${JSON.stringify(config.data, null, "\t")}`);
         };
     });
