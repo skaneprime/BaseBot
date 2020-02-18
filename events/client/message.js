@@ -27,6 +27,7 @@ module.exports = (client, [message]) => {
     
     // Инициализировать команду и добавить GuildMember кулдаун.
     if(command) {
+        client.emit('command', message, command);
         command.execute(client, message, args);
         client.cooldowns[message.guild.id][message.author.id][command.name] = new Date().getTime()
     };
