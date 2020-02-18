@@ -1,10 +1,13 @@
-global.cmd = require('./tools/console');
-
 global.settings = {
-    "debug": false, // enable debug mode
-    "warn": true, // enable warns
-    "error": true // enable errors
-}
+    "debug": false, // debug mode
+    "MinimalMode": false, // disable modules and system information on start
+    "warn": true, // warns mode
+    "error": true // errors mode
+};
+global.cmd = require('./tools/console');
+global.mongoose = require('mongoose');
+mongoose.connect('mongodb://185.230.241.45/basebot', { useNewUrlParser: true, useUnifiedTopology: true});
+global.DataBaseConnection = mongoose.connection; // connection to mongodb database. 
 
 const fs = require('fs'); // require('fs');
 require('./SysLoader')(fs); // load SystemModule

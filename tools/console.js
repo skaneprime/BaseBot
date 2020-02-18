@@ -9,17 +9,19 @@ module.exports = {
     error: function (err) {
         // console.log(err.stack.split('at'))       
         console.log(`──────────────────────${chalk.red.bold('FOUND ERROR')}──────────────────────`)
-        console.log(chalk.red.bold.italic(`[${err.constructor.name}]`, `=>`, err));
+        console.log(chalk.red.bold.italic(`[${err.constructor.name}]`, `=>`, err.stack));
         // console.log(`──────────────────────${chalk.red.bold('FOUND ERROR')}──────────────────────`)
     },
     log: function(...args) {
         console.log(chalk.cyan.bold('[LOG]'), args.join(' '));
     },
     sys: function(...args) {
-        console.log(chalk.magenta.bold('[SYSTEM]'), args.join(' '));
+        if(!settings.MinimalMode)
+            console.log(chalk.magenta.bold('[SYSTEM]'), args.join(' '));
     },
     mod: function(...args) {
-        console.log(chalk.green.bold('[MODULE]'), args.join(' '));
+        if(!settings.MinimalMode)
+            console.log(chalk.green.bold('[MODULE]'), args.join(' '));
     },
     warn: function(...args) {
         console.log(chalk.yellow.bold('[WARN]'), args.join(' '));

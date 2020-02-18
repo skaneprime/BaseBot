@@ -1,18 +1,18 @@
+const SuperStorage = require('./SuperStorage');
 module.exports = class BaseCommand {
     constructor(data) {
-        this.name = data.name || 'unnamed'; // Название комманды
-        this.aliases = data.aliases || []; // Второстепенное название комманды
-        this.category = data.category || "Не указано"; // Категория комманды
-        this.cache = data.cache || {}; // Не нужный кеш
-        this.usage = data.usage || "Не указано"; // Для комманды help
-        this.description = data.description || "Не указано"; // Описание комманды
-        this.guildOnly = data.guildOnly || "true"; // Полезно :3
-        this.allowed_guilds = data.allowed_guilds || []; // Полезно
-        this.cooldown = data.cooldown || 0; // Колдаун
+        this.name = data.name || 'unnamed'; // Name of command
+        this.aliases = data.aliases || []; // Aliases of command. Each of them is Array element
+        this.category = data.category || "Undefined"; // Category of command 
+        this.cache = new SuperStorage(); // Cache of command
+        this.usage = data.usage || "Undefined"; // Usage of command
+        this.description = data.description || "Undefined"; // Description of command
+        this.guildOnly = data.guildOnly || true; // Check can user use command only in guild or dm also.
+        this.allowed_guilds = data.allowed_guilds || []; // Allowed guild array. Each element is id of guild. Empty Array to disable this.
+        this.cooldown = data.cooldown || 0; // cooldown of command
 
         this.execute = (client, message, args, ...params) => {
-            message.reply('Команда не имеет функционала.');
+            message.reply('Command does not have any functionality.');
         };
     };
-
 };

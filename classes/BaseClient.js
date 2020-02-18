@@ -1,4 +1,5 @@
-const { Client, Collection } = require('discord.js');
+const SuperStorage = require('./SuperStorage');
+const { Client } = require('discord.js');
 module.exports = class BaseClient extends Client {
     constructor() {
         super(global.config.client); // setting client
@@ -6,7 +7,7 @@ module.exports = class BaseClient extends Client {
         this.disableEveryone = global.config.client.disableEveryone;
         this.prefix = global.config.client.prefix; // create client.prefix
 
-        this.commands = new Collection(); // create new collection for commands
+        this.commands = new SuperStorage(); // create new SuperStorage for commands
         this.cooldowns = {}; // create new object for cooldown, client.cooldowns
     };
 
