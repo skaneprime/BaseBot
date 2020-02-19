@@ -17,6 +17,12 @@ changelog v0.0.4
 3. в основные места добавлены цвета и выделения важных частей
 4. добавлен нормальный readme!
 
+changelog v0.0.5
+1. Added SuperStorage
+2. Now SysLoader can load subdir files
+3. Added command Event emmited by client
+4. BaseClient.commands & BaseCommand.cache is SuperStorage
+
 [TASKS]
 1. Динамичный Хелп
 2. Сделать основные настройки бота
