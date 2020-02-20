@@ -10,4 +10,5 @@ module.exports = (client, fs) => {
             });
         };
     });
+    // cmd.table(client.commands)
 };

@@ -1,5 +1,5 @@
 let BaseCommand = require('../../classes/BaseCommand');
-module.exports = class extends BaseCommand {
+module.exports = class ExampleCacheCommand extends BaseCommand {
     constructor() {
         super({
             name: "cache",
