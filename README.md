@@ -23,6 +23,10 @@ changelog v0.0.5
 3. Added command Event emmited by client
 4. BaseClient.commands & BaseCommand.cache is SuperStorage
 
+changelog v0.0.6
+1. Added DataBase/index.js (MongoDB)
+2. A func to calculate how much memory BaseBot uses on launch. 
+
 [TASKS]
 1. Динамичный Хелп
 2. Сделать основные настройки бота
