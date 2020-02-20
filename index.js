@@ -1,15 +1,17 @@
 global.settings = {
-    "debug": false, // debug mode
     "MinimalMode": false, // disable modules and system information on start
-    "warn": true, // warns mode
-    "error": true // errors mode
+    "debug": 0, // debug mode
+    "warn": 0, // warns mode
+    "error": 0 // errors mode
 };
-global.cmd = require('./tools/console');
-global.mongoose = require('mongoose');
-mongoose.connect('mongodb://185.230.241.45/basebot', { useNewUrlParser: true, useUnifiedTopology: true});
-global.DataBaseConnection = mongoose.connection; // connection to mongodb database. 
-
-const fs = require('fs'); // require('fs');
+global.memoryUsage = function() {
+    const used = process.memoryUsage();
+    for (let key in used) {
+        cmd.log(`${key} ${Math.round(used[key] / 1024 / 1024 * 100) / 100} MB`);
+    };
+};
+global.chalk = require('chalk'); // require chalk  and set it as a global
+global.fs = require('fs'); // require fs and set it as a global
 require('./SysLoader')(fs); // load SystemModule
 
 let BaseClient = require('./classes/BaseClient.js');  // require BaseClient

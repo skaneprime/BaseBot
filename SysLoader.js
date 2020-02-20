@@ -1,5 +1,6 @@
 chalk = require('chalk');
 module.exports = (fs) => {
+    global.cmd = require('./tools/console');
     fs.readdirSync('./system').forEach(result => {
         if(fs.lstatSync(`./system/${result}`).isDirectory())
             fs.readdirSync('./system/'+result).forEach(r => initSys(result+'/'+r));
