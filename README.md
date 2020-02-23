@@ -27,6 +27,13 @@ changelog v0.0.6
 1. Added DataBase/index.js (MongoDB)
 2. A func to calculate how much memory BaseBot uses on launch. 
 
+changelog v0.0.7
+1. Added Web foulder which includes server.js
+2. Now S3rxio can work! Go work S3rxio! 
+3. web/css web/html
+4. Super ConfigManager! 
+5. Some fixes 
+
 [TASKS]
 1. Динамичный Хелп
 2. Сделать основные настройки бота
