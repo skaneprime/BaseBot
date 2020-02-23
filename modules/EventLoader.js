@@ -1,5 +1,5 @@
 const fs = require('fs');
-global.cmd.mod(`${chalk.bold.red(`[EventLoader]`)} ${chalk.bold.white(`Successfully Loaded`)}`);
+cmd.mod(`${chalk.bold.red(`[EventLoader]`)} ${chalk.bold.white(`Successfully Loaded`)}`);
 module.exports = (client) => {
     fs.readdirSync('./events').forEach(dir => {
         if(dir === 'client') 

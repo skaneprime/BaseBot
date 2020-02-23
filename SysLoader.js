@@ -1,9 +1,15 @@
 chalk = require('chalk');
 module.exports = (fs) => {
-    fs.readdirSync('./system').forEach(initSys);
+    global.cmd = require('./tools/console');
+    fs.readdirSync('./system').forEach(result => {
+        if(fs.lstatSync(`./system/${result}`).isDirectory())
+            fs.readdirSync('./system/'+result).forEach(r => initSys(result+'/'+r));
+        else 
+            initSys(result);
+    });
 
     function initSys(filename) {
-        global.cmd.sys(`${chalk.bold.red(`[${filename.split('.')[0]}]`)} Loading...`);
+        cmd.sys(`${chalk.bold.blue(`Initializing ${filename.split('.')[0]}`)}`);
         require(`./system/${filename}`);
     };
 }; 

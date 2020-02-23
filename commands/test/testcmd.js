@@ -1,5 +1,5 @@
 let BaseCommand = require('../../classes/BaseCommand');
-module.exports = class TestCmd extends BaseCommand {
+module.exports = class extends BaseCommand {
     constructor() {
         super({
             name: "testcmd",
@@ -7,7 +7,7 @@ module.exports = class TestCmd extends BaseCommand {
             category: "dev",
             usage: "Без аргументов",
             description: "Тестовая команда",
-            guildOnly: "true",
+            guildOnly: true,
             allowed_guilds: ["664158117227134996", "653191169328676874"],
             cooldown: 6
         });

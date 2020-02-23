@@ -1,19 +1,19 @@
-let BaseCommand = require('./../classes/BaseCommand');
-module.exports = class TestCmd extends BaseCommand {
+let BaseCommand = require('../../classes/BaseCommand');
+module.exports = class extends BaseCommand {
     constructor() {
         super({
-            name: "НАЗВАНИЕ КОМАНДЫ",
-            aliases: ["АЛИАСЫ"],
-            category: "КАТЕГОРИЯ",
-            usage: "АРГУМЕНТЫ",
-            description: "ОПИСАНИЕ",
-            guildOnly: "true", // только на сервере, ЛС не используется!
-            allowed_guilds: [СЕРВЕРА НА КОТОРЫЙ РАБОТАЕТ ЭТА КОМАНДА ОСТАВЛЯЙТЕ [] - для отключения],
-            cooldown: 0 // кулдаун
+            name: "Command name", // Name of command
+            aliases: ["aliases"], // Aliases of command. Each of them is Array element
+            category: "category name", // Category of command 
+            usage: "usage", / Usage of command
+            description: "description", // Description of command
+            guildOnly: true, // Check can user use command only in guild or dm also.
+            allowed_guilds: [], // Allowed guild array. Each element is id of guild. Empty Array to disable this.
+            cooldown: 0 // cooldown of command
         });
 
         this.execute = (client, message, args, ...params) => {
-            код
+            //Code..
         };
     };
 };
