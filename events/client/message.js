@@ -22,8 +22,8 @@ module.exports = async (client, [message]) => {
 
     // Система premslevel
     let checking = await checklevel(message.author, command.permLevel, message);
-    if(!checking) 
-        return message.channel.send(`Sorry, you don't have permission to run this command. \n\nThis command only for **${checking.NAME}**`);
+    if(checking != "ACCEPTED") 
+        return message.channel.send(`Sorry, you don't have permission to run this command. \n\nThis command only for **${checking.name}**`);
 
     let GuildMember_cooldown = command.cooldown * 1000 + client.cooldowns[message.guild.id][message.author.id][command.name]; //Кулдаун пользователя
     if(GuildMember_cooldown > new Date().getTime()) {
@@ -51,7 +51,7 @@ async function checklevel(user, level, message) {
         let user_lvl = result[0].permLevel;
         let command_lvl = config.perms[level];
         if(user_lvl >= command_lvl.level)
-            return true
+            return "ACCEPTED"
         else
             return command_lvl;
     } else {

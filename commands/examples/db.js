@@ -10,7 +10,7 @@ module.exports = class SimpleCommand extends BaseCommand {
             guildOnly: true,
             allowed_guilds: [],
             cooldown: 5,
-            permLevel: 5
+            permLevel: 3
         });
         this.execute = async (client, message, args) => {
             let User = require('../../database/model/user')
