@@ -28,7 +28,7 @@ module.exports = async (client) => {
     // .then(link =>{
     //     global.cmd.info(yellow.bold('[INVITE]'), `${link}`);
     // });
-    
+    require('./../../modules/webLoader');
     // memoryUsage();
     // console.log(await database.find('commands'))
     // console.log(await database.insert('commands', { name: 'twice' }))
