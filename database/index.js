@@ -15,8 +15,14 @@ module.exports = {
     },
 
     connect: function (url, options) {
-        mongoose.connect(url, options);
-        cmd.sys(`${chalk.cyan.bold('[DATABASE]')} ${chalk.green.bold('Connected')}!`)
+        try {
+            mongoose.connect(url, options, function(err) {
+                if(err) cmd.error(err);
+            });
+            cmd.sys(`${chalk.cyan.bold('[DATABASE]')} ${chalk.green.bold('Connected')}!`)
+        } catch (err) {
+            cmd.error(err);
+        }
     },
 
     find: function(tableName, data, type) {

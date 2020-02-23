@@ -17,8 +17,9 @@ module.exports = class ExampleCacheCommand extends BaseCommand {
             cache is an object which can store anything. to clear it you can just set it as {} 
             this.cache = {}
             */
-            this.cache[args[0]] = args[1];
-            console.log(client.commands.get('cache'));
+            // this.cache[args[0]] = args[1];
+            // console.log(client.commands.get('cache'));
+            console.log(Object.keys(require.cache).length);
         };
     };
 };

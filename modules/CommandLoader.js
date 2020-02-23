@@ -1,4 +1,4 @@
-module.exports = (client, fs) => {
+module.exports = (client) => {
     cmd.mod(`${chalk.bold.red(`[CommandLoader]`)} ${chalk.bold.white(`Successfully Loaded`)}`);
     fs.readdirSync('./commands').forEach(result => {
         if(result == "example.form") return;

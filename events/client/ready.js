@@ -19,13 +19,18 @@ module.exports = async (client) => {
     }, 500);
     console.log(red.bold(readyBig));
     
-
+    client.appInfo = await client.fetchApplication();
+    // console.log(client.appInfo);
+    setInterval( async () => {
+        client.appInfo = await client.fetchApplication();
+    }, 60000);
     // client.generateInvite(["ADMINISTRATOR"])
     // .then(link =>{
     //     global.cmd.info(yellow.bold('[INVITE]'), `${link}`);
     // });
-
-    memoryUsage();
+    
+    // memoryUsage();
     // console.log(await database.find('commands'))
     // console.log(await database.insert('commands', { name: 'twice' }))
+    console.log(Object.keys(require.cache).length);
 };
