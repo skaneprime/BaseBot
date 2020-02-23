@@ -1,3 +1,3 @@
 module.exports = (client, [error]) => {
-    global.cmd.error(error);
+    cmd.error(error);
 };

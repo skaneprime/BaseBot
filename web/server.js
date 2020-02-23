@@ -1,28 +1,34 @@
-var express = require('express');
-var app = express();
-var fs = require('fs');
-var path = require('path');
-
-module.exports = (client) => {
-    app.set('views', path.join(__dirname, 'views'));
-    app.use(express.static(path.join(__dirname, 'public')));
-
-    app.use('/about', function(req, res) {
-        res.render('about', {
-            title: "Главная",
-            emailsVisible: true,
-            emails: ["admin@satou.fun", "skaneprime@gmail.com"]
-        })
-    });
-
-    app.use('/main', function(req, res) {
-        console.log(cmdtable.toString())
-        res.render('main'), {
-            sdfdsfdsfdfds: `${gdfgfgf}`
-        };
-    });
-
-    app.listen(7777, () => {
-        cmd.mod(`${chalk.bold.red(`[WebServer]`)} Server on, port listen: 7777`);
+const { readFileSync } = require('fs');
+const Vue = require('vue')
+const server = require('express')()
+let { createRenderer }= require('vue-server-renderer')
+const renderer = (file, app, req, res, context) => {
+    createRenderer({
+        template: readFileSync(`./web/html/${file}.html`, 'utf-8')
+    }).renderToString(app, context, (err, html) => {
+        if (err) {
+            console.log(err)
+            res.status(500).end('Server Error')
+            return
+        }
+        res.end(html);
     });
 };
+module.exports = (client) => {
+    server.use(require('express').static('./web'));
+    server.get('*', (req, res) => {
+        const app = new Vue({
+            data: {
+                url: req.url
+            },
+            template: `<div></div>` // Oauth2 Navigator
+        });
+        renderer('index', app, req, res, {
+            title: 'Test VUE',
+            meta: `<meta charset="UTF-8" />`,
+            client: client
+        });
+    });
+    
+    server.listen(8080, console.log('http://localhost:8080'))
+}
