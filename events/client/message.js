@@ -1,4 +1,4 @@
-module.exports = (client, [message]) => {
+module.exports = async (client, [message]) => {
     if(message.author.id === client.user.id || !message.content.startsWith(client.prefix)) 
         return;
     const args = message.content.slice(client.prefix.length).trim().split(/ +/g);
@@ -10,8 +10,17 @@ module.exports = (client, [message]) => {
     if(message.channel.type === "dm" && command.guildOnly) 
         return message.reply(`Команда ${cmd} доступа только на сервере!!!`);
     if(!command.allowed_guilds.includes(message.guild.id) && command.allowed_guilds.length > 0) 
-        return;    
+        return;  
         
+    // permlevel
+    let checking;
+    if(command.permLevel)
+        checking = await checklevel(message.author, command.permLevel, message);
+    else
+        checking = "ACCEPTED"
+    if(checking != "ACCEPTED") 
+        return message.channel.send(`Sorry, you don't have permission to run this command. \n\nThis command only for **${checking.name}**`);
+                
     // cooldown
     if(!client.cooldowns[message.guild.id]) 
         client.cooldowns[message.guild.id] = {};
@@ -33,3 +42,22 @@ module.exports = (client, [message]) => {
     };
 };
 
+
+
+
+
+async function checklevel(user, level, message) {
+    if(!level) return "ACCEPTED"
+    let UserSchema = require('../../database/model/user');
+    let result = await UserSchema.find({userID: user.id})
+    if(result[0]) {
+        let user_lvl = result[0].permLevel;
+        let command_lvl = config.perms[level-1];
+        if(user_lvl >= command_lvl.level)
+            return "ACCEPTED"
+        else
+            return command_lvl;
+    } else {
+        return config.perms[level];
+    }
+}
