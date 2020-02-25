@@ -1,0 +1,66 @@
+div.container {
+    margin: 0 auto;
+}
+div.guild-container {
+  width: 3em;
+  display: inline-flex;
+  justify-self: center;
+  align-self: center;
+
+}
+
+p.error {
+  border: 1px solid #ff5b5f;
+  background-color: #ffc5c1;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+div.guild {
+  display: inline-flexbox;
+  position: relative;
+  background-color: #5c5f5f;
+  padding: 10px 10px 30px 10px;
+  margin-bottom: 15px;
+  transition: all 240ms;
+}
+
+div.guild:hover {
+  background-color: #7e8181;
+}
+
+.returnToGuilds {
+  background: #222222;
+  /* border-radius: 20px; */
+  color: white;
+  width: 55px;
+  /* margin-top: 20px; */
+  /* border: none; */
+  /* padding: 15px 50px; */
+  text-align: center;
+  /* text-decoration: none; */
+  /* display: inline-block; */
+  /* font-size: 16px; */
+  /* position: absolute; */
+}
+
+div.AdvancedGuild {
+  background-color: #ff5b5f;
+  border: 5px solid #ff2e31;
+  margin-top: 5px;
+}
+
+img.guildIcon {
+  border-radius: 30%
+}
+
+p.text {
+  color: #aca9a9;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+h1 {
+  color: #ffffff;
+}
