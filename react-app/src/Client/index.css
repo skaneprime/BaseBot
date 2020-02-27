@@ -1,0 +1,23 @@
+div {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+div.client {
+    background-color: rgb(134, 134, 134);
+    padding: 20px;
+    border-radius: 10px;
+    color: rgb(197, 197, 197);
+    font-weight: bold;
+}
+
+div.command {
+    background-color: rgb(70, 70, 70);
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 5px;
+    font-size: smaller;
+}
+
+.command_name {
+    text-align: center;
+    color: white;
+}

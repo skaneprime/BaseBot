@@ -28,7 +28,7 @@ router.get(/.*/, async (req, res) => {
         
         // if(c != client) {
         res.status(200);
-        return res.end(JSON.stringify(c, null, "\t"));
+        return res.end(JSON.stringify(c/*))*/, null, "\t"));
         // }
     } catch (err) {
         res.end(JSON.stringify(err));
