@@ -10,9 +10,13 @@ app.use(cors());
 
 const client = require('./routes/api/client');
 const database = require('./routes/api/database');
+const command = require('./routes/api/command');
+
 
 app.use('/api/client', client);
 app.use('/api/database', database);
+app.use('/api/command', command)
+
 
 app.use(express.static(__dirname + '/public'));
 

@@ -1,6 +1,6 @@
 /* eslint-disable no-useless-constructor */
 import React, { Component } from 'react'
-import './command.css';
+import './index.css';
 
 export default class command extends Component {
     constructor({ command, state }) {

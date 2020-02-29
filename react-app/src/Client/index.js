@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Command from './classes/command';
+import Command from './command/index';
 import './index.css';
 
 export default class index extends Component {
@@ -22,13 +22,15 @@ export default class index extends Component {
     render() {
         return (
             <div className="client">
-                { this.client.user.tag }
-                
+                { this.client.user.username }'s Commands
+                <hr/>
+                <div className="command-container">
                 { this.client.commands.map(command => (
-                    <div className="command" onClick={() => this.ToggleCommand(command)}>
-                        { this.state.SelectedCommand !== command.name ? command.name : <Command command={command} state={this.state}/> }
+                    <div className="command" key={command.name} onClick={() => this.ToggleCommand(command)}>
+                        { this.state.SelectedCommand !== command.name ? <p className="command_name">{ command.name }</p> : <Command command={command} state={this.state}/> }
                     </div> 
                 ))}
+                </div>
             </div>
         )
     }

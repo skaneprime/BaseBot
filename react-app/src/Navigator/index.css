@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #353b48;
+    color: #fff;
+    font-weight: 400;
+}
+
+.NavBar {
+    background-color: #2f3640;
+    /* border-radius: 10px; */
+    width: min-content;
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    height: 100%; /* Full height */
+    position: fixed; /* Make it stick, even on scroll */
+    overflow: auto; /* Enable scrolling if the sidenav has too much content */
+}
+
+.NavChild {
+    display: block;
+    color: white;
+    background-color: #373f4b;
+    border-radius: 10px;
+    padding: 5px;
+    /* width: 120px; */
+    margin-bottom: 5px;
+    text-align: left;
+    text-decoration: none;
+    outline: none;
+}

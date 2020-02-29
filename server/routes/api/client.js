@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const axios = require('axios');
 
 // Get Posts
 // router.get
@@ -8,6 +9,9 @@ router.get('/test' + /.*/, async (req, res) => {
     // console.log(access(client, req.url.split("/").slice(1)))
     console.log(req.url.split(".") + "    " + req.url.slice(1));
     res.json(access(client, req.url.slice(1)))
+    axios.post('http://locahost:3000/api/client/cmdMENU/create', {
+        todo: 'hello'
+    })
 }); 
 
 router.get(/.*/, async (req, res) => {

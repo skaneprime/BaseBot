@@ -1,15 +1,31 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route, useLocation } from "react-router-dom";
 import Client from './Client/index';
 import Guilds from './Guilds/index';
+import FullGuild from './Guilds/Guild/FullGuild';
+import Navigator from './Navigator/index';
+import Footer from './Footer/index';
+import MainPage from './MainPage/index';
+import ErrorBoundary from './ErrorBoundary/index';
 import axios from 'axios';
+import './App.css';
 
 function App() {
   const [loading, setLoading] = useState(true);
   const [client, setClient] = useState({});
   const [guilds, setGuilds] = useState([]);
-
-  const [SelectedCommandName, setSelectedCommandName] = useState(null);
-
+  // const [SelectedCommandName, setSelectedCommandName] = useState(null);
+  
+  const ShowGuild = (props, guilds) => {
+    const { match } = props;
+    let {id} = match.params;
+    let Guild = guilds.filter(g => g.id === id)[0];
+    if(Guild)
+      return (<FullGuild guild={Guild}/>);
+    else 
+      return (<Guilds guilds={guilds}/>)
+  };
+  
   function FetchGuilds() {
     return new Promise((resolve, reject) => {
       axios.get('http://localhost:5000/api/client/guilds/cache').then(async ({ data }) => {
@@ -70,13 +86,30 @@ function App() {
     }).then(setLoading);
   }, []);
 
-  if(loading) return "Loading...";
+  if(loading) return (<h1>LOADING</h1>);
 
   return (
-    <>
-      <Client client={client} SelectedCommandName={SelectedCommandName} setSelectedCommandName={setSelectedCommandName} />
-      <Guilds guilds={guilds} />
-    </>
+    <Router>
+      <ErrorBoundary>
+        <Navigator />
+        <br/>
+        <Switch>
+          <Route path="/client">
+            <Client client={client} />
+          </Route>
+          <Route path="/guilds/:id" component={(props) => ShowGuild(props, guilds)}>
+          </Route>
+          <Route path="/guilds">
+            <Guilds guilds={guilds} />
+          </Route>
+          <Route>
+            <MainPage />
+          </Route>
+        </Switch>
+        <br/>
+        <Footer guilds={guilds} />
+      </ErrorBoundary>
+    </Router>
   );
 }
 

@@ -1,17 +1,29 @@
-/* eslint-disable jsx-a11y/alt-text */
-import React from 'react'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import ShortGuild from './Guild/ShortGuild.js';
+import FullGuild from './Guild/FullGuild.js';
 import './index.css';
 
-export default function index({ guilds }) {
-    console.log(guilds);
-    return (
-        <div className="container">
-            { guilds.map(guild => (
-                <div className="guild">
-                    <img className="guild_icon" src={ guild.iconURL || 'https://cdn.discordapp.com/icons/657586144791363594/5f8627ef6dc69b914ed90c3e029a9fbc.webp?size=128' }></img>
-                    <p className="guild_name"> {guild.name} </p>
-                </div>
-            ))}
-        </div>
-    )
+export default class index extends Component {
+    constructor({ guilds }) {
+        super();
+        
+        this.guilds = guilds;
+    }
+
+    render() {
+        let GuildList = this.guilds.map(guild => {
+            return (
+                <Link style={{ textDecoration: "none" }} to={`/guilds/${guild.id}`}>
+                    <ShortGuild guild={guild} />
+                </Link>
+            );
+        });
+        return (
+            <div className="container">
+                { GuildList }
+            </div>
+        )
+    }
 }
+
