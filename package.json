@@ -3,24 +3,57 @@
   "version": "1.0.2",
   "description": "BASE BOT",
   "main": "index.js",
+  "private": true,
   "scripts": {
-    "start": "node index"
+    "start": "node .",
+    "start-react": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "author": "ASSS - AfteraiseR Saitama Satou S3rxio",
+  "author": "S S S A - Satou Saitama S3rxio AfteraiseR",
   "license": "ISC",
   "dependencies": {
+    "@testing-library/jest-dom": "^5.1.1",
+    "@testing-library/react": "^9.4.1",
+    "@testing-library/user-event": "^10.0.0",
     "ascii-table": "0.0.9",
+    "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "chalk": "^3.0.0",
+    "core-js": "^3.6.4",
+    "cors": "^2.8.5",
     "discord.js": "github:discordjs/discord.js",
     "express": "^4.17.1",
     "install": "^0.13.0",
+    "mongodb": "^3.5.3",
     "mongoose": "^5.9.1",
+    "node-fetch": "^2.6.0",
     "npm": "^6.13.7",
     "path": "^0.12.7",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.4.0",
     "readline-sync": "^1.4.10",
-    "url": "^0.11.0",
-    "vue": "^2.6.11",
-    "vue-server-renderer": "^2.6.11"
+    "replace-in-file": "^5.0.2",
+    "replace-in-files": "^2.0.3",
+    "url": "^0.11.0"
+  },
+  "proxy": "http://localhost:5000",
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

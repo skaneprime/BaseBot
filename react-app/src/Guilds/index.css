@@ -1,0 +1,7 @@
+div.container {
+    margin-left: 100px;
+    background: rgb(63, 68, 78);
+    padding: 20px 20px 20px 20px;
+    border-radius: 10px;
+    display: inline-flex;
+}

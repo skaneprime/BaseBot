@@ -1,0 +1,75 @@
+div.FullGuild {
+    background-color: #2f3640;
+    width: 1500px;
+    height: 1700px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    transition: all 240ms;
+}
+
+div.container {
+    margin-left: 100px;
+    background: rgb(63, 68, 78);
+    padding: 20px 20px 20px 20px;
+    display: inline-flex;
+}
+
+.FullGuild_name {
+    width: 200px;
+    padding: 2px;
+    margin-left: 20px;
+    margin-right: 20px;
+    color: #868a90;
+    font-size: small;
+    font-weight: 500;
+}
+
+.FullGuild_icon {
+    background-color: #262c35;
+    padding: 5px;
+    margin-left: 20px;
+    margin: 20px 20px 0px 20px;
+    border-radius: 10px;
+    transition: all 240ms;
+}
+
+.channel-container {
+    margin-left: 200px;
+    background-color: rgb(103, 105, 126);
+    padding: 20px;
+}
+
+.channel {
+    margin-bottom: 10px;
+}
+
+.Menu {
+    background: rgb(24, 25, 29);
+}
+
+.MenuButton {
+    display: inline-flex;
+    text-decoration: none;
+}
+
+.MenuButtonImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.MenuButton:hover {
+    background-color: rgb(63, 68, 78);
+    border-bottom: 3px solid violet;
+}
+
+.guild-menu-container {
+    background-color: rgb(73, 93, 105);
+    width: 1270px;
+    height: 1570px;
+    padding: 20px;
+    margin-top: -140px;
+    margin-left: 180px;
+    color: rgb(255, 255, 255);
+}

@@ -1,5 +1,6 @@
+/* eslint-disable no-undef */
 global.settings = {
-    "MinimalMode": false, // disable modules and system information on start
+    "MinimalMode": true, // disable modules and system information on start
     "debug": 0, // debug mode
     "warn": 0, // warns mode
     "error": 0 // errors mode

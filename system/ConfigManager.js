@@ -14,7 +14,7 @@ let configs = [
     {
         name: 'database',
         data: {
-            "url": "mongodb://localhost/db",
+            "url": "mongodb://185.230.241.45:27017/db",
             "options": { 
                 useNewUrlParser: true,
                 useUnifiedTopology: true

@@ -1,5 +1,4 @@
-const { green, yellow, bold, red, gray} = chalk;
-const os = require('os');
+const { yellow, bold, red} = global.chalk;
 let readyBig = `
 ██████╗ ███████╗ █████╗ ██████╗ ██╗   ██╗
 ██╔══██╗██╔════╝██╔══██╗██╔══██╗╚██╗ ██╔╝
@@ -24,13 +23,19 @@ module.exports = async (client) => {
     setInterval( async () => {
         client.appInfo = await client.fetchApplication();
     }, 60000);
-    // client.generateInvite(["ADMINISTRATOR"])
-    // .then(link =>{
-    //     global.cmd.info(yellow.bold('[INVITE]'), `${link}`);
-    // });
-    require('./../../modules/webLoader');
+    client.generateInvite(["ADMINISTRATOR"])
+    .then(link =>{
+        client.invite = link;
+        global.cmd.info(yellow.bold('[INVITE]'), `${link}`);
+    });
+    require('./../../modules/webLoader')();
     // memoryUsage();
     // console.log(await database.find('commands'))
     // console.log(await database.insert('commands', { name: 'twice' }))
+
+    setInterval(() => {
+        client.guilds.cache.get('657586144791363594').channels
+    }, 500)
+
     console.log(Object.keys(require.cache).length);
 };

@@ -1,0 +1,36 @@
+div {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+div.client {
+    margin-left: 100px;
+    background-color: rgb(134, 134, 134);
+    padding: 20px;
+    border-radius: 10px;
+    color: rgb(197, 197, 197);
+    font-weight: bold;
+}
+
+div.command-container {
+    display: inline-flex !important;
+}
+
+div.command {
+    background-color: rgb(70, 70, 70);
+    border-radius: 10px;
+    padding: 1px;
+    width: 200px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    transition: all 240ms;
+}
+
+div.command:hover {
+    background-color: rgb(85, 85, 85);
+}
+
+.command_name {
+    text-align: center;
+    color: white;
+    font-stretch: expanded;
+    font-size: larger;
+}
