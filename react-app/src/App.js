@@ -164,26 +164,41 @@ function App() {
     });
   };
 
+  function UltraFetch (loadingData, callback, asyncFunc, resolve, reject) {
+    asyncFunc()
+    .then(() => {
+      setLoading(loadingData);
+      callback();
+    }).catch(err => reject({ v: true, jsxv: `ERROR ${err.stack}`, l: "error", state: { i: 2, hex: "#D10000" }}));
+  }
+  
   useEffect(() => {
     setLoading({ v: true, jsxv: `Loading`, l: "loading", state: { i: 0, hex: "#bd8700" } });
     new Promise((resolve, reject) => {
       try {
-        // throw new Error('test')
         console.log('[GETDATA]','Awaiting Promise...')
-        FetchClient()
-        .then(() => {
+        UltraFetch({ 
+          v: true, 
+          jsxv: `Loading`,
+          l: "client fetched", 
+          state: { i: 1, hex: "#c7b300" } 
+        }, () => {
           console.log('[GETDATA]','Client is fetched! ');
-          setLoading({ v: true, jsxv: `Loading`, l: "client fetched", state: { i: 1, hex: "#c7b300" } });
-          FetchGuilds()
-          .then(() => { 
-            console.log('[GETDATA]', 'Guilds are fetched! resolving..');
-            setLoading({ v: true, jsxv: `Loading`, l: "guilds fetched", state: { i: 2, hex: "#A4D792" } });
+          UltraFetch({ 
+            v: true, 
+            jsxv: `Ready!`, 
+            l: "guilds fetched", 
+            state: { i: 2, hex: "#A4D792" } 
+          }, () => {
             setTimeout(() => {
-              resolve({ v: false, jsxv: null, l: "guilds fetched", state: { i: 2, hex: "#A4D792" } })
+              resolve({ 
+                v: false, 
+                jsxv: null, 
+                l: "guilds fetched", 
+                state: { i: 2, hex: "#A4D792" } })
             }, 500);
-          })
-        })
-        .catch(err => reject({ v: true, jsxv: `ERROR ${err.stack}`, l: "error", state: { i: 2, hex: "#D10000" }}));
+          }, FetchGuilds, resolve, reject);
+        }, FetchClient, resolve, reject);
       } catch (err) {
         console.log(err)
         reject({ v: true, jsxv: `ERROR ${err.stack}`, l: "error", state: { i: 2, hex: "#D10000" }});
