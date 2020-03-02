@@ -34,7 +34,9 @@ function App() {
     let proxyUrl = `http://localhost:5000/api/`;
     return new Promise((resolve, reject) => {
       try {
-        axios.get(`${proxyUrl}${link}`).then(({data}) => resolve(data));
+        axios.get(`${proxyUrl}${link}`)
+          .then(({data}) => resolve(data))
+          .catch(reject);
       } catch (err) {
         reject(err);
       }
@@ -178,6 +180,7 @@ function App() {
             resolve({ v: false, jsxv: null, l: "guilds fetched", state: { i: 2, hex: "#A4D792" } })
           })
         })
+        .catch(err => reject({ v: true, jsxv: `ERROR ${err.stack}`, l: "error", state: { i: 2, hex: "#D10000" }}));
       } catch (err) {
         console.log(err)
         reject({ v: true, jsxv: `ERROR ${err.stack}`, l: "error", state: { i: 2, hex: "#D10000" }});
