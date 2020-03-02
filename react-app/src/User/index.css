@@ -1,0 +1,33 @@
+.main {
+    margin-left: 100px;
+}
+
+.avatar {
+    position: absolute;
+    background: rgb(93, 99, 121);
+    padding: 10px;
+    border-radius: 50px;
+    left: 45%;
+}
+
+.avatar:hover {
+    border-radius: 20px;
+}
+
+.profile {
+    background: rgb(59, 65, 83);
+    padding: 50px;
+    height: 1000px;
+}
+
+.user-nick {
+    border-radius: 20px;
+    font-size: 15px;
+    position: absolute;
+    color: lightsteelblue;
+    padding: 5px;
+    width: inherit;
+    background: rgb(71, 80, 102);
+    left: 44.5%;
+    margin-top: 180px;
+}

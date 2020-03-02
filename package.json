@@ -5,15 +5,15 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "start": "node .",
-    "start-react": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "react": "cd ./react-app && react-scripts start",
+    "client": "node .",
+    "test": "cd ./react-app && react-scripts test",
+    "eject": "cd ./react-app && react-scripts eject"
   },
   "author": "S S S A - Satou Saitama S3rxio AfteraiseR",
   "license": "ISC",
   "dependencies": {
+    "@discordjs/opus": "^0.1.0",
     "@testing-library/jest-dom": "^5.1.1",
     "@testing-library/react": "^9.4.1",
     "@testing-library/user-event": "^10.0.0",
@@ -23,9 +23,11 @@
     "chalk": "^3.0.0",
     "core-js": "^3.6.4",
     "cors": "^2.8.5",
+    "discord-oauth2": "^2.0.2",
     "discord.js": "github:discordjs/discord.js",
     "express": "^4.17.1",
     "install": "^0.13.0",
+    "js-cookie": "^2.2.1",
     "mongodb": "^3.5.3",
     "mongoose": "^5.9.1",
     "node-fetch": "^2.6.0",
@@ -38,7 +40,9 @@
     "readline-sync": "^1.4.10",
     "replace-in-file": "^5.0.2",
     "replace-in-files": "^2.0.3",
-    "url": "^0.11.0"
+    "url": "^0.11.0",
+    "ytdl": "^1.2.0",
+    "ytdl-core": "^2.0.0"
   },
   "proxy": "http://localhost:5000",
   "eslintConfig": {

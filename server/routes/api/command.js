@@ -7,7 +7,7 @@ const replace = require('replace-in-file');
 // Get Posts
 // router.get
 
-let parser = bodyParser.urlencoded({ type: 'application/x-www-form-urlencoded'});
+let parser = bodyParser.json({ type: 'multipart/form-data'});
 
 
 router.all(/.*/, parser, async (req, res) => {

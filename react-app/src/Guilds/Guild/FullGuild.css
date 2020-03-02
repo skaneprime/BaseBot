@@ -40,10 +40,6 @@ div.container {
     padding: 20px;
 }
 
-.channel {
-    margin-bottom: 10px;
-}
-
 .Menu {
     background: rgb(24, 25, 29);
 }
@@ -72,4 +68,19 @@ div.container {
     margin-top: -140px;
     margin-left: 180px;
     color: rgb(255, 255, 255);
+}
+
+.category {
+    border: none;
+    color: white;
+    background-color: rgb(43, 42, 65);
+    padding: 5px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.category-channel-container {
+    display: block;
 }
