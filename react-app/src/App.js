@@ -22,7 +22,7 @@ function App() {
   /* Привет, как дела? Номально сделал заrембуные шутки воис??? дыа */
   const ShowGuild = (props, guilds) => {
     const { match } = props;
-    let {id} = match.params;
+    let { id } = match.params;
     let Guild = guilds.filter(g => g.id === id)[0];
     if(Guild)
       return (<FullGuild guild={Guild}/>);
@@ -165,7 +165,7 @@ function App() {
   };
 
   useEffect(() => {
-    setLoading({ v: true, jsxv: `Loading`, l: "loading", state: { i: 0, hex: "#A4D792" } });
+    setLoading({ v: true, jsxv: `Loading`, l: "loading", state: { i: 0, hex: "#bd8700" } });
     new Promise((resolve, reject) => {
       try {
         // throw new Error('test')
@@ -173,11 +173,14 @@ function App() {
         FetchClient()
         .then(() => {
           console.log('[GETDATA]','Client is fetched! ');
-          setLoading({ v: true, jsxv: `Loading`, l: "client fetched", state: { i: 2, hex: "#A4D792" } });
+          setLoading({ v: true, jsxv: `Loading`, l: "client fetched", state: { i: 1, hex: "#c7b300" } });
           FetchGuilds()
           .then(() => { 
             console.log('[GETDATA]', 'Guilds are fetched! resolving..');
-            resolve({ v: false, jsxv: null, l: "guilds fetched", state: { i: 2, hex: "#A4D792" } })
+            setLoading({ v: true, jsxv: `Loading`, l: "guilds fetched", state: { i: 2, hex: "#A4D792" } });
+            setTimeout(() => {
+              resolve({ v: false, jsxv: null, l: "guilds fetched", state: { i: 2, hex: "#A4D792" } })
+            }, 500);
           })
         })
         .catch(err => reject({ v: true, jsxv: `ERROR ${err.stack}`, l: "error", state: { i: 2, hex: "#D10000" }}));

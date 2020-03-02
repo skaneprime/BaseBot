@@ -39,5 +39,6 @@
 }
 
 .loading-bar {
+    transition: all 500ms;
     height: 40px;
 }

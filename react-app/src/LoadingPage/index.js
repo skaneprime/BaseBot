@@ -8,7 +8,7 @@ export default function index({ content, state}) {
             <div className="bar">
                 <div className="loading-bar" id="loading-bar" style={{ width: state.i * 200, background: state.hex }} />
             </div>
-            <h1 className="text" style={{ color: String(content).includes('Error') ? "#FFFFFF" : state.hex }}>{ String(content).includes('Error') ? 'Error has occurred' : content }</h1>
+            <h1 className="text" style={{ color: String(content).includes('Error') ? "#808080" : "#818199" }}>{ String(content).includes('Error') ? 'Error has occurred' : content }</h1>
         </div>
     )
 }
