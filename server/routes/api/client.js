@@ -1,8 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
+const bodyParser = require('body-parser')
+const ytdl = require('ytdl-core');
 
 // Get Posts
+let parser = bodyParser.json({ type: 'application/json'});
+
 // router.get
 router.get('/test' + /.*/, async (req, res) => {
     const access = (obj, str) => str.split('.').reduce((acc, val) => acc[val], obj)
@@ -14,15 +18,29 @@ router.get('/test' + /.*/, async (req, res) => {
     })
 }); 
 
+router.post(/.*/, parser, async (req, res) => {
+    let urlArray = req.url.split("/").slice(1);
+    try {
+        require(`./methods/${urlArray[0]}/${urlArray[1]}`)(req, res, urlArray);
+    } catch (err) {
+        if(err.stack.includes('Cannot find module'))
+            return;
+        cmd.error(err);
+        res.end(err.stack);
+    }
+})
+
 router.get(/.*/, async (req, res) => {
     try {
         res.setHeader('Content-Type', 'application/json', 'charset=utf-8');
         let dad = req.url.split("/").slice(1);
         let c = client;
         dad.forEach((key, i) => {
-            
             if(["getbyid", 'gbi'].includes(key.toLowerCase())) {
                 return c = c.get(dad[i+1])
+            } 
+            if(["resolvebyid", 'rbi'].includes(key.toLowerCase())) {
+                return c = c.resolve(dad[i+1])
             } 
             if(isNaN(parseInt(key)))
                 c = c[key];
@@ -40,4 +58,3 @@ router.get(/.*/, async (req, res) => {
 });
 
 module.exports = router;
-

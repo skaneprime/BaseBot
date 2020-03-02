@@ -1,0 +1,13 @@
+.channel {
+    display: block;
+    text-decoration: none;
+    background-color: brown;
+    color: white;
+    padding: 5px;
+    margin-bottom: 3px;
+    transition: all 240ms;
+}
+
+.channel:hover {
+    background-color: cadetblue;
+}

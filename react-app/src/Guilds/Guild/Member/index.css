@@ -1,0 +1,15 @@
+.member-card {
+    display: block;
+    background: rgb(64, 67, 78);
+    padding: 10px;
+    border-radius: 10px;
+    color: rgb(88, 88, 88);
+    margin-bottom: 5px;
+    font-weight: bolder;
+}
+
+.member-card-text, #bimg {
+    display: inline;
+    vertical-align: super;
+    margin-left: 1em;
+}
