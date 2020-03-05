@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { Link, Route } from 'react-router-dom';
 import './index.css';
+import FullTextChannel from './FullTextChannel';
 
 export default class index extends Component {
     constructor({ channel }) {
@@ -12,14 +14,14 @@ export default class index extends Component {
     }
 
     render() {
-        // console.log(this.channel);
         return (
             <>
                 <Link className="channel" to={`/guilds/${this.channel.guild}/channels/${this.channel.id}`}>
                     { this.channel.name }
                 </Link>
-                <Route keypath={`/guilds/${this.channel.guild}/channels/${this.channel.id}`}>
-                    { console.log({ MSG: this.channel.messages}) }
+                <Route path={`/guilds/${this.channel.guild}/channels/${this.channel.id}`}>
+                    {/* { console.log(this.channel) } */}
+                    <FullTextChannel channel={this.channel} />
                 </Route>
             </>
         )

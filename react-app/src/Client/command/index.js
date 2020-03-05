@@ -1,14 +1,30 @@
-/* eslint-disable no-useless-constructor */
+import LoadingPage from '../../LoadingPage/index';
 import React, { Component } from 'react'
 import './index.css';
 
 export default class command extends Component {
-    constructor({ command, state }) {
+    constructor({ command }) {
         super();
+        
+        this.state = {
+            command: command,
+            ActivatedCSSClassName: 'active',
+            loading: true
+        };
+    }
 
-        this.state = command;
+    LoadData() {
+        return new Promise(async (resolve, reject) => {
+            try {
+                resolve();
+            } catch (err) {
+                reject(err)
+            }
+        });
+    }
 
-        this.ActivatedCSSClassName = state.ActivatedCSSClassName;
+    componentWillMount() {
+        this.setState(state => ({ ...state, loading: false }));
     }
 
     SaveCommand(command) {
@@ -16,16 +32,18 @@ export default class command extends Component {
     }
 
     render() {
-        // console.log(this.ActivatedCSSClassName);
+        if(this.state.loading)
+            return <LoadingPage content="Loading" state={{ i: 2, hex: "#A4D792" }}/>
+
         return (
             <div className={ this.ActivatedCSSClassName }>
-                SELECTED { this.state.name } 
-                <button className="button" onClick={() => this.SaveCommand(this.state) }>Save</button>
+                SELECTED { this.state.command.name } 
+                <button className="button" onClick={() => this.SaveCommand(this.state.command) }>Save</button>
                 <br/>
 
                 Description:
                 <br/> 
-                <textarea defaultValue={ this.state.description } />
+                <textarea defaultValue={ this.state.command.description } />
             </div>
         )
     }

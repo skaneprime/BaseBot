@@ -1,4 +1,5 @@
 global.mongoose = require('mongoose');
+global.MongoClient = require('mongodb').MongoClient;
 // cmd.sys(`${chalk.cyan.bold('[DATABASE]')} Required!`)
 module.exports = {
     
@@ -16,10 +17,15 @@ module.exports = {
 
     connect: function (url, options) {
         try {
-            mongoose.connect(url, options, function(err) {
-                if(err) cmd.error(err);
+            mongoose.connect(url, options).then(conn => {
+                global.connection = conn;
+                cmd.sys(`${chalk.cyan.bold('[DATABASE]')} ${chalk.green.red('Mongoose')} ${chalk.green.bold('Connected')}!`)
+            })
+            MongoClient.connect(url, function(err, connect) {
+                if(err) return cmd.error(err);
+                global.db = connect;
+                cmd.sys(`${chalk.cyan.bold('[DATABASE]')} ${chalk.green.red('MongoClient')} ${chalk.green.bold('Connected')}!`)
             });
-            cmd.sys(`${chalk.cyan.bold('[DATABASE]')} ${chalk.green.bold('Connected')}!`)
         } catch (err) {
             cmd.error(err);
         }

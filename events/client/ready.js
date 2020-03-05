@@ -38,4 +38,30 @@ module.exports = async (client) => {
     // }, 500)
 
     console.log(Object.keys(require.cache).length);
+
+
+    cmd.log(`Fetch all guilds in db`);
+    client.guilds.cache.forEach(async guild => {
+        let ServerSchema = require('../../database/model/server');
+        let result = await ServerSchema.find({_id: guild.id})
+        if(!result[0]) {
+            cmd.log(`Server ${guild.name} not found, start creating`);
+            let Server = new ServerSchema({
+                _id: guild.id,
+                name: guild.name,
+                options: {
+                    tickets: {
+                        mode: 1,
+                        parentID: 0,
+                        channelID: 0,
+                        limit: 1
+                    }
+                }
+            })
+            Server.save();
+        } else {
+            cmd.info(`Registed ${chalk.bold(guild.name)} | Members: ${chalk.bold(guild.members.cache.size)} `)
+        }
+    })
+
 };

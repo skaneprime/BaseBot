@@ -1,3 +1,5 @@
+const ytdl = require('ytdl-core');
+
 module.exports = async (req, res, urlArray) => {
     if(!urlArray[2]) 
         return res.end(`Undefined channel id`)

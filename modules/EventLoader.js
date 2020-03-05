@@ -7,7 +7,7 @@ module.exports = (client) => {
     }); // Перебор все ивентов из конфига events.json
     
     function ClientOnEvent(event) {
-        client.on(event.split('.')[0], (...params) => require(`../events/client/${event}`)(client, params)); // run event on client.event
+        cmd.mod(`${chalk.bold.red(`[EventLoader]`)} ${chalk.bold(event)} ${chalk.bold.white(`successfully Loaded`)}`);        client.on(event.split('.')[0], (...params) => require(`../events/client/${event}`)(client, params)); // run event on client.event
     };
     
     function ProcessOnEvent(event) {

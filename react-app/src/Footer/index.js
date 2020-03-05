@@ -3,7 +3,6 @@ import React from 'react';
 import './index.css';
 
 export default function index({ guilds }) {
-    // console.log(guilds);
     return (
         <div className="footer">
             <h3>

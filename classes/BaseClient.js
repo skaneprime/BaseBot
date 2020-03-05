@@ -23,4 +23,12 @@ module.exports = class BaseClient extends Client {
             console.log(error) // on error
         }
     };
+    loadDBCommand(name) {
+        try {
+            const cmdClass = db.commands.find({'name': name});
+            console.log(cmdClass);
+        } catch (error) {
+            console.log(error)
+        }
+    }
 };
