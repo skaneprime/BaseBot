@@ -17,7 +17,7 @@ module.exports = class HelpCommand extends BaseCommand {
             if(args[0] === "react") return message.channel.send(args.slice(2)).then(async msg => {
                 msg.react(args[1]);
                 let Schema = require(`${appDir}/database/model/server`)
-                let result = await Schema.findOne({_id: message.guild.id});
+                let result = await Schema.findOne({ _id: message.guild.id });
                 if(result)
                     result.options.tickets.messageID = msg.id;
                 result.save();

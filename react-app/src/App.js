@@ -11,6 +11,7 @@ import MainPage from './MainPage/index';
 import ErrorBoundary from './ErrorBoundary/index';
 import User from './User/index';
 import LoadingPage from './LoadingPage/index';
+import Header from './Header/index';
 import axios from 'axios';
 import DiscordOAuth2 from 'discord-oauth2';
 import Cookies from 'js-cookie';
@@ -75,6 +76,7 @@ function App() {
   return (
     <Router>
       <ErrorBoundary>
+        <Header />
         <Navigator />
         <br/>
         <Switch>

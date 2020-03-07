@@ -43,7 +43,12 @@ export default class command extends Component {
 
                 Description:
                 <br/> 
-                <textarea defaultValue={ this.state.command.description } />
+                <p style={{ fontSize: "15px", color: "white"}}>{ this.state.command.description }</p>
+                <br />
+                Usage:
+                <br/> 
+                <p style={{ fontSize: "15px", color: "white"}}>{ this.state.command.usage }</p>
+                <br />
             </div>
         )
     }

@@ -12,6 +12,8 @@ global.memoryUsage = function() {
     };
 };
 
+global.tools = require('./tools/main');
+
 var path = require('path');
 global.appDir = path.resolve(__dirname);
 

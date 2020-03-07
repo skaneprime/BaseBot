@@ -1,9 +1,13 @@
 body {
-    background-color: rgb(37, 37, 37);
+    background-color: #2F3640;
+    color: #fff;
+    overflow-x: hidden;
 }
 
 * {
     transition: 500ms;
+    margin: 0;
+    padding: 0;
 }
 
 /* width */

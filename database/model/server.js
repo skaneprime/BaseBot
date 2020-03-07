@@ -8,9 +8,11 @@ let serverSchema = new mongoose.Schema({
             channelID: String,
             limit: Number,
             messageID: String,
-            emojiIDS: Array
-        }
-    },
+            emojiIDS: Array,
+            rolesIDS: Array
+        },
+        giveRole: String
+    }
 });
 
 module.exports = mongoose.model("servers", serverSchema);

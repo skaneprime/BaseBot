@@ -1,5 +1,6 @@
 global.mongoose = require('mongoose');
 global.MongoClient = require('mongodb').MongoClient;
+require('mongoose-function')(mongoose)
 // cmd.sys(`${chalk.cyan.bold('[DATABASE]')} Required!`)
 module.exports = {
     

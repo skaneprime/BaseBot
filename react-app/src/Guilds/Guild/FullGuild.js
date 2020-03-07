@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import { Link, Switch, Route } from 'react-router-dom';
-import axios from 'axios';
 import getData from './../../Functions/GetData';
-import MemberList from './MemberList/index';
+// import MemberList from './MemberList/index';
 import MemberWrapper from './MemberList/MemberWrapper';
 import LoadingPage from './../../LoadingPage/index';
 import TextChannel from './TextChannel/index';
 import VoiceChannel from './VoiceChannel/index';
-import Member from './Member/index';
+// import Member from './Member/index';
 import './FullGuild.css';
 
-function timeout(callback, ms) {
-    return new Promise(resolve => setTimeout(async () => resolve(await callback()), ms));
-};
+// function timeout(callback, ms) {
+//     return new Promise(resolve => setTimeout(async () => resolve(await callback()), ms));
+// };
 
 export default class FullGuild extends Component {
     constructor({ guild }) {

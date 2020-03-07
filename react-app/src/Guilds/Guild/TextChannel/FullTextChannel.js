@@ -178,7 +178,7 @@ export default class FullTextChannel extends Component {
             <div id="channel" className="channel" style={{ padding: "20px", height: "700px"}}>        
                 <form onSubmit={(e) => this.handleText(e, this)}>
                     <label> 
-                        <a onClick={this.toggleEmbedMode.bind(this)} style={{ background: "rgb(47, 46, 73)", padding: "5px" }}>EMBED MODE: {this.state.isEmbed ? "ON" : "OFF"}</a>
+                        <p onClick={this.toggleEmbedMode.bind(this)} style={{ background: "rgb(47, 46, 73)", padding: "5px" }}>EMBED MODE: {this.state.isEmbed ? "ON" : "OFF"}</p>
                         <div style={{ marginTop: "10px" }}>
                             {MessageBox}
                         </div>

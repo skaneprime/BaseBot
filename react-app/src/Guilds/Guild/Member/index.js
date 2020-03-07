@@ -48,11 +48,11 @@ export default class index extends Component {
         // console.log(this.state.member)
         return (
             <div>
-                <a className="member-card" style={{ color: `${this.state.member.displayHexColor}`}} key={ this.state.member.user.id }>
+                <p className="member-card" style={{ color: `${this.state.member.displayHexColor}`}} key={ this.state.member.user.id }>
                     <img alt = "" style={{ borderRadius: "20px" }} src={this.state.member.user.avatarURL || this.state.member.user.defaultAvatarURL} width="32px" height="32px"/> 
-                    <a className="member-card-text">{ this.state.member.user.tag }</a>
+                    <p className="member-card-text">{ this.state.member.user.tag }</p>
                     {this.state.member.user.bot ? <img alt = "" style={{ background: "#ff0099", borderRadius: "5px", marginLeft: "5px" }} src="https://image.flaticon.com/icons/svg/531/531270.svg" width="32px" height="32px"/> : ''}
-                </a>
+                </p>
             </div>
         )
     }
