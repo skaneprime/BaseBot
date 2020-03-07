@@ -1,33 +1,79 @@
-.main {
-    margin-left: 100px;
-}
 
-.avatar {
+
+.box {
     position: absolute;
-    background: rgb(93, 99, 121);
-    padding: 10px;
-    border-radius: 50px;
-    left: 45%;
+    display: inline;
+    margin-left: 0.5em;
+    text-align: right !important;
+
+
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-.avatar:hover {
-    border-radius: 20px;
-}
-
-.profile {
-    background: rgb(59, 65, 83);
-    padding: 50px;
-    height: 1000px;
-}
-
-.user-nick {
-    border-radius: 20px;
-    font-size: 15px;
+.box-info {
     position: absolute;
-    color: lightsteelblue;
-    padding: 5px;
-    width: inherit;
-    background: rgb(71, 80, 102);
-    left: 44.5%;
-    margin-top: 180px;
+    display: block;
+    text-align: center;
+
+    width: 12em;
+    font-size: 2.2em;
+    /* float: right; */
+
+
+    top: 50%;
+    right: 2%;
+    transform: translate(-2%, -50%);
+}
+
+.box img {
+    border-radius: 50%;
+    width: 30%;
+    float: left;
+}
+
+.box .name {
+    font-size: 5em;
+    float: right;
+}
+
+.box .btn {
+    font-size: 1.5em;
+    text-align: center;
+    padding: 3px 104px;
+    background-color: #282C36;
+    color: #fff;
+    border: none;
+    transition: all 320ms;
+    outline: none;
+    cursor: pointer;
+}
+
+.box .btn:hover {
+    background-color: #252830;
+}
+
+.box-info .description {
+    text-align: left;
+}
+
+
+@media (min-width: 1777px) {
+    .main-page {
+        font-size: 2em;
+    }
+
+    .box .btn {
+        padding: 3px 208px;
+    }
+}
+
+@media (max-width: 1240px) {
+    .main-page {
+        font-size: 0.5em;
+    }
+
+    .box .btn {
+        padding: 3px 52px;
+    }
 }

@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 const bodyParser = require('body-parser')
-const ytdl = require('ytdl-core');
 
 // Get Posts
 let parser = bodyParser.json({ type: 'application/json'});

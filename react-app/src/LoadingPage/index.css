@@ -39,6 +39,20 @@
 }
 
 .loading-bar {
-    transition: all 500ms;
+    /* transition: all 500ms; */
     height: 40px;
+}
+
+@keyframes move {
+    0% {
+        width: 200px;
+    }
+    50% {
+        margin-left: 200px;
+        width: 200px;
+    }
+    100% {
+        width: 200px;
+        margin-left: 0px;
+    }
 }

@@ -1,3 +1,3 @@
 module.exports = (client, [warn]) => {
-    cmd.warn(warn);
+    return cmd.warn(warn);
 };

@@ -1,7 +1,11 @@
 module.exports = async (client, [message]) => {
-    if(message.author.id === client.user.id || !message.content.startsWith(client.prefix)) 
+    const GuildSchema = await require('../../database/model/Guild');
+
+    let GuildSettings = await GuildSchema.findOne({ _id: message.guild.id})
+    if(message.author.id === client.user.id || !message.content.startsWith(GuildSettings.prefix)) 
         return;
-    const args = message.content.slice(client.prefix.length).trim().split(/ +/g);
+
+    const args = message.content.slice(GuildSettings.prefix.length).trim().split(/ +/g);
     const cmd = args.shift().toLowerCase();
     let command = client.commands.find(cmdClass => cmdClass.name === cmd || cmdClass.aliases.includes(cmd));
     if(!command) 

@@ -19,12 +19,19 @@ export default class index extends Component {
             })
         };
 
+        // console.log(this.channel)
+        // let VoicePanel = async () => {
+            // let ClientUserIdRes = await axios.get(`http://localhost:5000/api/client/user/id`);
+            // let CGMV = await axios.get(`http://localhost:5000/api/client/guilds/rbi/${this.channel.guild}/members/rbi/${ClientUserIdRes.data}/voice`);
+            // console.log(ClientUserIdRes.data, CGMV.data);
+        // };
         return (
-            <>
+            <div>
                 <button className="channel" onClick={() => joinChannel(this.channel.id)}>
-                    { this.channel.name }    
+                    { this.channel.name }  
+                    {/* { console.log(VoicePanel()) }   */}
                 </button>
-            </>
+            </div>
         )
     }
 }

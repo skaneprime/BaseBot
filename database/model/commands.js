@@ -6,7 +6,8 @@ let commands = new mongoose.Schema({
     description: String,
     guildOnly: Boolean,
     allowed_guilds: Array,
-    cooldown: Number
+    cooldown: Number,
+    execute: Function
 });
 
 module.exports = mongoose.model("commands", commands);

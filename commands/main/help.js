@@ -5,7 +5,7 @@ module.exports = class HelpCommand extends BaseCommand {
         super({
             name: "help",
             aliases: ["помощь", "helpme", "command", "hello"],
-            category: "main",
+            category: "MAIN",
             usage: `${client.prefix}help [команда или категория]`,
             description: "Получить список команд",
             guildOnly: "true",
@@ -33,8 +33,8 @@ module.exports = class HelpCommand extends BaseCommand {
 
             // if args is empty will output categories list
             if (args.length == 0) {
-                embed.setTitle(`Категории`)
-                embed.setDescription(`Использование: ${client.prefix}${this.name} [категория]\n**Категории:** ${helpStr}`)
+                embed.setTitle(`Categoryes`)
+                embed.setDescription(`Usage: ${client.prefix}${this.name} [category]\n**Categoryes:** ${helpStr}`)
                 message.channel.send(embed);
             };
 
@@ -54,10 +54,10 @@ module.exports = class HelpCommand extends BaseCommand {
                     });
 
                     //base embed settings
-                    embed.setTitle(`Команды`);
-                    embed.setDescription(`Использование: ${client.prefix}help [команда]\nКоманды:${helpStr}`);
-                    embed.setFooter(`Страница: ${page}/${maxP}`);
-                    embed.setAuthor(`Категория: ${args[0]}`);
+                    embed.setTitle(`Commands`);
+                    embed.setDescription(`Usage: ${client.prefix}help [command]\nCommands:${helpStr}`);
+                    embed.setFooter(`Page: ${page}/${maxP}`);
+                    embed.setAuthor(`Category: ${args[0]}`);
 
                     //setting msg, msg is embedMessage that sending or editing bot
                     if (status == true)
@@ -118,8 +118,8 @@ module.exports = class HelpCommand extends BaseCommand {
             else if (command) { //if args was a command name
                 if(command.invisible) 
                     return;
-                embed.setTitle(`Информация о команде ${args[0]}`);
-                embed.setDescription(`Команда: ${args[0]}\nОписание: ${command.description}\nИспользование: ${command.usage}\nПерезарядка: ${command.cooldown} сек\nВарианты: ${command.aliases}\nКатегория: **${command.category}**`);
+                embed.setTitle(`Information about command ${args[0]}`);
+                embed.setDescription(`Command: ${args[0]}\nDescription: ${command.description}\nUsage: ${command.usage}\nCooldown: ${command.cooldown} seconds\nAliases: ${command.aliases}\nCategory: **${command.category}**`);
                 message.channel.send(embed);
             };
         };

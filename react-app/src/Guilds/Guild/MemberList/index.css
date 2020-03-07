@@ -1,0 +1,16 @@
+
+body {
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+.Note {
+    background-color: #ffd;
+    border-left: 0.25rem solid #ff6;
+    padding: 0.5rem;
+}
+
+.List {
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+}

@@ -1,0 +1,162 @@
+#header {
+    background-color: #353B48;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+
+    padding: 10px 40px;
+    z-index: 1;
+
+    font-weight: 360;
+    font-size: 2.5em;
+}
+
+.header-links {
+    position: relative;
+    display: inline;
+
+    vertical-align: middle;
+    margin-left: -1em;
+}
+
+.header-links a {
+    margin-left: 0.6em;
+
+    color: #fff;
+    text-decoration: none;
+}
+
+.right-content {
+    position: relative;
+    display: inline;
+
+    float: right;
+    
+    text-align: right;
+}
+
+.right-content span {
+    vertical-align: middle;
+}
+
+.user-menu {
+    /* position: absolute; */
+    display: inline;
+    border-radius: 50%;
+
+}
+
+/* .user-menu .btn {
+    border-radius: 50%;
+    width: 35%;
+    margin-top: 1em;
+
+} */
+
+.user-menu .logo {
+    position: relative;
+    z-index: 2;
+    width: 18%;
+    border-radius: 50%;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* .container {
+    position: absolute;
+    display: inline;
+    margin-left: 0.5em;
+    text-align: right !important;
+
+
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.container-info {
+    position: absolute;
+    display: block;
+    text-align: center;
+
+    width: 12em;
+    font-size: 2.2em;
+
+
+    top: 50%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+}
+
+.container img {
+    border-radius: 50%;
+    width: 30%;
+    float: left;
+}
+
+.container .name {
+    font-size: 5em;
+    float: right;
+}
+
+.container .btn {
+    font-size: 1.5em;
+    text-align: center;
+    padding: 3px 115px;
+    background-color: #282C36;
+    color: #fff;
+    border: none;
+    transition: all 320ms;
+    outline: none;
+}
+
+.container .btn:hover {
+    background-color: #252830;
+}
+
+.container-info .description {
+    text-align: left;
+} */
+
+.user-menu-bar {
+    z-index: 1;
+    position: absolute;
+    background-color: #252830;
+    border-radius: 50px;
+    margin-left: 82%;
+    margin-top: -50px;
+    width: 63px;
+    height: 0px;
+    animation-name: Appearance;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+}
+
+.user-menu-bar img {
+    opacity: 0;
+    animation-name: Appearance-logo;
+    animation-duration: 5s;
+}
+
+
+@keyframes Appearance {
+
+    from {
+        height: 250px;
+    }
+}
+
+@keyframes Appearance-logo {
+    from {
+        opacity: 1;
+    }
+}
+
+.user-menu-bar .btns {
+    text-align: center;
+    margin-top: 1.3em;
+}
+
+.user-menu-bar img {
+    margin-top: 0.3em;
+}

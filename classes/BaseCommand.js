@@ -11,9 +11,13 @@ module.exports = class BaseCommand {
         this.allowed_guilds = data.allowed_guilds || []; // Allowed guild array. Each element is id of guild. Empty Array to disable this.
         this.cooldown = data.cooldown || 0; // cooldown of command
         this.cache = new SuperStorage(); // Cache of command
-
-        this.execute = (client, message, args, ...params) => {
+        this.execute = data.execute || function (client, message, args, ...params) {
             message.reply('Command does not have any functionality.');
         };
+        // console.log('DATALOG:', data);
     };
+
+    toBSON() {
+        return this;
+    }
 };

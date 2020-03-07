@@ -1,4 +1,5 @@
 const { yellow, bold, red} = global.chalk;
+
 let readyBig = `
 ██████╗ ███████╗ █████╗ ██████╗ ██╗   ██╗
 ██╔══██╗██╔════╝██╔══██╗██╔══██╗╚██╗ ██╔╝
@@ -23,19 +24,47 @@ module.exports = async (client) => {
     setInterval( async () => {
         client.appInfo = await client.fetchApplication();
     }, 60000);
+
     client.generateInvite(["ADMINISTRATOR"])
     .then(link =>{
         client.invite = link;
         global.cmd.info(yellow.bold('[INVITE]'), `${link}`);
     });
-    require('./../../modules/webLoader')();
+    // require('./../../modules/webLoader')();
     // memoryUsage();
-    // console.log(await database.find('commands'))
-    // console.log(await database.insert('commands', { name: 'twice' }))
 
-    // setInterval(() => {
-    //     client.guilds.cache.get('657586144791363594').channels
-    // }, 500)
 
-    console.log(Object.keys(require.cache).length);
+    cmd.log(`Fetching all guilds from db`);
+    client.guilds.cache.forEach(async guild => {
+        const GuildSchema = require('../../database/model/Guild');
+        let result = await GuildSchema.find({_id: guild.id})
+        /* await GuildSchema.find({}).then((AllValues) => {
+            console.log(AllValues)
+        }); */
+        
+        if(!result[0]) {
+            cmd.log(`Server ${guild.name} not found, creating...`);
+            new GuildSchema({
+                _id: guild.id,
+                tickets: [{
+                    parentID: null,
+                    HandleChannelID: null,
+                    EaMList: [{
+                        EmojiID: String,
+                        messagesOnInit: [],
+                    }]
+                }],
+                autoRoleID: null,
+                prefix: client.prefix
+            }).save()
+        } else {
+            cmd.info(`Registered ${chalk.bold(guild.name)} | Members: ${chalk.bold(guild.members.cache.size)} `)
+        }
+    })
+    cmd.log('[CACHE-LENGTH]', Object.keys(require.cache).length);
+
+    // const GuildSchema = await require('../../database/model/Guild');
+    // let GuildSettings = await GuildSchema.findOne({ _id: message.guild.id})
+
+    //global.current_prefix = GuildSettings.prefix
 };

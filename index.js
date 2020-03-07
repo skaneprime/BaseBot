@@ -12,6 +12,11 @@ global.memoryUsage = function() {
     };
 };
 
+global.tools = require('./tools/main');
+
+var path = require('path');
+global.appDir = path.resolve(__dirname);
+
 
 global.chalk = require('chalk'); // require chalk  and set it as a global
 global.fs = require('fs'); // require fs and set it as a global

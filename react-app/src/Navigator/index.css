@@ -10,7 +10,7 @@ body {
 }
 
 .NavBar {
-    background-color: #2f3640;
+    background-color: #282C36;
     /* border-radius: 10px; */
     list-style-type: none;
     margin: 0;
@@ -24,7 +24,6 @@ body {
 .NavChild {
     display: block;
     color: white;
-    background-color: #373f4b;
     border-radius: 5%;
     padding: 0.5%;
     width: 100%;

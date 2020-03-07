@@ -9,7 +9,8 @@ module.exports = class extends BaseCommand {
             description: "description", // Description of command
             guildOnly: true, // Check can user use command only in guild or dm also.
             allowed_guilds: [], // Allowed guild array. Each element is id of guild. Empty Array to disable this.
-            cooldown: 0 // cooldown of command
+            cooldown: 0, // cooldown of command
+            invisible: false
         });
 
         this.execute = (client, message, args, ...params) => {

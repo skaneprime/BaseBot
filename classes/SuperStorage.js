@@ -4,11 +4,22 @@ module.exports = class SuperStorage extends Collection {
         super(data);
     };
 
-    // arrays = (element_count_in_array) => {
-    //     let arr = this.array();
-    //     let arrs = [];
-    //     for (let i = 0; i < arr.length; i++) {
-    //         arrs.push()
-    //     };
-    // };
+    /**
+     * 
+     * @param {Number} [ChunkLength=Number] Length of each chunk 
+     */
+    toChunks(ChunkLength) {
+        let i, j, ChunkedArrays = [];
+        for (i = 0, j = this.array().length; i<j; i+=ChunkLength) {
+            let chuSS = new SuperStorage();
+            this.array().slice(i, i+ChunkLength).map(element => chuSS.set(this.findKey(Ce => Ce === element), element))
+            ChunkedArrays.push(chuSS);
+            // console.log(ChunkedArrays.length, ChunkLength, j)
+            if(ChunkLength+ChunkedArrays.length + ([1,4].includes(ChunkLength) ? -1 : 0) > j-1) {
+                return ChunkedArrays
+            }
+        }
+    }
 };
+
+
