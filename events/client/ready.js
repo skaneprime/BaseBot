@@ -20,8 +20,8 @@ module.exports = async (client) => {
     console.log(red.bold(readyBig));
     
     client.appInfo = await client.fetchApplication();
-    // console.log(client.appInfo);
     setInterval( async () => {
+        cmd.debug(`[APP_INFO] fetched`)
         client.appInfo = await client.fetchApplication();
     }, 60000);
 
@@ -30,18 +30,12 @@ module.exports = async (client) => {
         client.invite = link;
         global.cmd.info(yellow.bold('[INVITE]'), `${link}`);
     });
-    // require('./../../modules/webLoader')();
     // memoryUsage();
 
-
-    cmd.log(`Fetching all guilds from db`);
+    cmd.log(`Fetching all guilds from database`);
     client.guilds.cache.forEach(async guild => {
         const GuildSchema = require('../../database/model/Guild');
         let result = await GuildSchema.find({_id: guild.id})
-        /* await GuildSchema.find({}).then((AllValues) => {
-            console.log(AllValues)
-        }); */
-        
         if(!result[0]) {
             cmd.log(`Server ${guild.name} not found, creating...`);
             new GuildSchema({
@@ -62,9 +56,4 @@ module.exports = async (client) => {
         }
     })
     cmd.log('[CACHE-LENGTH]', Object.keys(require.cache).length);
-
-    // const GuildSchema = await require('../../database/model/Guild');
-    // let GuildSettings = await GuildSchema.findOne({ _id: message.guild.id})
-
-    //global.current_prefix = GuildSettings.prefix
 };

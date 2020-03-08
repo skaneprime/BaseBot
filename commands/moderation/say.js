@@ -10,7 +10,8 @@ module.exports = class extends BaseCommand {
             description: "",
             guildOnly: true, // только на сервере, ЛС не используется!
             allowed_guilds: [],
-            cooldown: 1 // кулдаун
+            cooldown: 1,
+            permLevel: 1
         });
 
         this.execute = async (client, message, args, ...params) => {

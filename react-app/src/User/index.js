@@ -9,7 +9,7 @@ export default class index extends Component {
 
         this.state = {
             loading: true,
-            user: {}
+            user: { tag: null }
         }
     }
 

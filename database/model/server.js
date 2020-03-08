@@ -1,4 +1,4 @@
-let serverSchema = new mongoose.Schema({
+let serverSchema = new mongoose.Schema({ // old. Not using anymore.
     _id: Number,
     name: String,
     options: {

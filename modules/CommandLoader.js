@@ -6,7 +6,8 @@ module.exports = async (client) => {
             client.loadCommand(result.split(".")[0]);
         } else {
             fs.readdirSync(`./commands/${result}`).forEach(file => {
-                client.loadCommand(file.split(".")[0], result);
+                if(file.includes('.js'))
+                    client.loadCommand(file.split(".")[0], result);
             });
         };
     });

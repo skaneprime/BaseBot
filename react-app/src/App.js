@@ -12,6 +12,7 @@ import ErrorBoundary from './ErrorBoundary/index';
 import User from './User/index';
 import LoadingPage from './LoadingPage/index';
 import Header from './Header/index';
+import Docs from './Docs/index';
 import axios from 'axios';
 import DiscordOAuth2 from 'discord-oauth2';
 import Cookies from 'js-cookie';
@@ -22,7 +23,12 @@ function App() {
   const [MemberListLoading, setMemberListLoading] = useState(true)
   const [guilds, setGuilds] = useState([]);
   const [MemberPage, setMemberPage] = useState(0);
-  const observer = useRef()
+  const [AuthoredUser, setAuthoredUser] = useState(null);
+  const observer = useRef();
+  const oauth = new DiscordOAuth2();
+  if(Cookies.get('access_token')) {
+    oauth.getUser(Cookies.get('access_token')).then(console.log);
+  }
   const LastMemberElementRef = useCallback(node => {
    // if(node == null) return console.log(`НОДЕЕЕЕЕ ТУТ: ${node}`)
     // setTimeout(() => {
@@ -60,7 +66,8 @@ function App() {
       try {
         let guilds = await getData('client/guilds/cache');
         setGuilds(guilds);
-        setLoading({ v: false, jsxv: `Maintance`, l: "loading", state: { i: 2, hex: "#bd8700" } });
+        // setLoading({ v: false, jsxv: `Maintance`, l: "loading", state: { i: 2, hex: "#bd8700" } });
+        resolve({ v: false, jsxv: ``, l: "Ready", state: { i: 2, hex: "#4aff53" } })
       } catch (err) {
         console.log(err)
         reject({ v: true, jsxv: `ERROR ${err.stack}`, l: "error", state: { i: 2, hex: "#D10000" }});
@@ -91,9 +98,12 @@ function App() {
           <Route path="/user">
             <User />
           </Route>
+          <Route path="/docs">
+            <Docs />
+          </Route>
           <Route>
             <User />
-            {/* <MainPage /> */}
+            <MainPage />
           </Route>
         </Switch>
         <br/>

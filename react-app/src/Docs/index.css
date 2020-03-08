@@ -1,0 +1,8 @@
+.embed {
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: none;
+    border-left: 5px solid;
+    padding: 20px;
+    background-color: rgb(68, 72, 85);
+}

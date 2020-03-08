@@ -25,10 +25,10 @@ export default class index extends Component {
                 <div className="user-menu-bar">
                     <ul className="btns">
                         <Link className="btn" to="/client">
-                            <img alt='Logo for usr-bar' src="https://i.imgur.com/mGUSbgL.png" width="45px" height="45px" />
+                            <img alt='Logo for usr-bar' src="https://i.imgur.com/2rxzMeV.png" width="45px" height="45px" />
                         </Link>
                         <Link className="btn" to="/guilds">
-                            <img alt='Logo for usr-bar' src="https://i.imgur.com/2rxzMeV.png" width="45px" height="45px" />
+                            <img alt='Logo for usr-bar' src="https://i.imgur.com/mGUSbgL.png" width="45px" height="45px" />
                         </Link>
 
                         <Link className="btn" to="/guilds">
@@ -43,8 +43,8 @@ export default class index extends Component {
             <header id="header">
                 <div className="header-links">
                     <a href="/">Home</a>
-                    <a href="/">Docs</a>
-                    <a href="/">Discord</a>
+                    <a href="/docs">Docs</a>
+                    <a href="https://discord.gg/6hagHQ2">Discord</a>
                 </div>
             
                 <div className="right-content">

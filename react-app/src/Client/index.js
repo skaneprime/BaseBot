@@ -50,17 +50,19 @@ export default class index extends Component {
             return <LoadingPage content="Loading" state={{ i: 2, hex: "#A4D792" }}/>
 
         return (
+            <>
             <div className="client">
-                { this.state.client.user.username }'s Commands
-                <hr/>
+                <div class="title-container"><h1>{ this.state.client.user.username }'s Commands</h1></div>
+
                 <div className="command-container">
-                { this.state.client.commands.map(command => (
+                { this.state.client.commands.filter(c => !c.invincible).map(command => (
                     <div className="command" key={command.name} onClick={() => this.ToggleCommand(command)}>
                         { this.state.SelectedCommand !== command.name ? <p className="command_name">{ command.name }</p> : <Command command={command} /> }
                     </div> 
                 ))}
                 </div>
             </div>
+            </>
         )
     }
 }

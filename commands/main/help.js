@@ -14,33 +14,34 @@ module.exports = class HelpCommand extends BaseCommand {
         });
 
         this.execute = async (client, message, args, ...params) => {
-            let helpStr = ""; //creating universal string for contain lines in embed
-            let categories = {}; //creating object {category_name:[cmd1, cmd2...], cat_name2:...}
+            if(args[0])args[0] = args[0].toLowerCase()
+            let helpStr = ""; // Creating special string which will contain help text
+            let categories = {}; //Creating object which will look like {category_name:[cmd1, cmd2...], cat_name2:...}
 
             //filling object and str above
             client.commands.forEach(cmd => {
-                if(!cmd.invisible) { // if cmd invisible will not included
-                    if (!categories.hasOwnProperty(cmd.category)) { //if new category adding to list
-                        helpStr += `\n- ${cmd.category}`;
-                        categories[cmd.category] = [];
-                    };
-                    categories[cmd.category].push(cmd.name); //adding cmd to category
+                if(!cmd.invisible) 
+                    return; // if cmd invisible will not be included
+                if (!categories.hasOwnProperty(cmd.category.toLowerCase())) { //if new category adding to list
+                    helpStr += `\n- ${cmd.category}`;
+                    categories[cmd.category.toLowerCase()] = [];
                 };
+                categories[cmd.category.toLowerCase()].push(cmd.name); // Adding cmd to category
             });
 
-            let command = client.commands.find(elem => elem.name == args[0]); //if in first help args indicated command name returns command
-            let embed = new Discord.MessageEmbed(); //creating main embed
+            let command = client.commands.find(elem => elem.name == args[0]); // searching for command
+            let embed = new Discord.MessageEmbed(); //creating new message embed
 
             // if args is empty will output categories list
             if (args.length == 0) {
-                embed.setTitle(`Categoryes`)
-                embed.setDescription(`Usage: ${client.prefix}${this.name} [category]\n**Categoryes:** ${helpStr}`)
+                embed.setTitle(`Categories`)
+                embed.setDescription(`Usage: ${client.prefix}${this.name} [category]\n**Categories:** ${helpStr}`)
                 message.channel.send(embed);
             };
 
             // if args is category name will output commands list in this category
             if (categories.hasOwnProperty(args[0]) == true) {
-                commandList(1, true) //executing func below with 1st page and creating
+                commandList(1, true) // executing func below with 1st page and creating
                 async function commandList(page, status, msg) {
                     helpStr = '' //clearing lines container
                     let maxP = Math.ceil(categories[args[0]].length / 10) //finding max possible page
