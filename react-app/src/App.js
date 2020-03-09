@@ -20,30 +20,29 @@ import './App.css';
 
 function App() {
   const [loading, setLoading] = useState({ v: true, jsxv: `Loading`, l: "first", state: { i: -1, hex: "#A4D792" }});
-  const [MemberListLoading, setMemberListLoading] = useState(true)
+  // const [MemberListLoading, setMemberListLoading] = useState(true)
   const [guilds, setGuilds] = useState([]);
   const [MemberPage, setMemberPage] = useState(0);
   const [AuthoredUser, setAuthoredUser] = useState(null);
   const observer = useRef();
   const oauth = new DiscordOAuth2();
-  const LastMemberElementRef = useCallback(node => {
-   // if(node == null) return console.log(`НОДЕЕЕЕЕ ТУТ: ${node}`)
-    // setTimeout(() => {
-        if(MemberListLoading)
-          return;
-        if(observer.current)
-          observer.current.disconnect();
-        observer.current = new IntersectionObserver(entries => {
-          if(entries[0].isIntersecting) {
-            console.log(`VISIBLE`);
-            setMemberPage(p => p+10);
-          }
-        });
-        console.log(node, MemberPage)
-        if(node) 
-          observer.current.observe(node)
-    // }, 1000)
-  }, [MemberListLoading]);
+  // const LastMemberElementRef = useCallback(node => {
+  //  // if(node == null) return console.log(`НОДЕЕЕЕЕ ТУТ: ${node}`)
+  //   // setTimeout(() => {
+  //       if(MemberListLoading)
+  //         return;
+  //       if(observer.current)
+  //         observer.current.disconnect();
+  //       observer.current = new IntersectionObserver(entries => {
+  //         if(entries[0].isIntersecting) {
+  //           console.log(`VISIBLE`);
+  //           setMemberPage(p => p+10);
+  //         }
+  //       });
+  //       if(node) 
+  //         observer.current.observe(node)
+  //   // }, 1000)
+  // }, [MemberListLoading]);
 
   const ShowGuild = (props, guilds) => {
     const { match } = props;
@@ -63,7 +62,6 @@ function App() {
       try {
         let guilds = await getData('client/guilds/cache');
         setGuilds(guilds);
-        console.log("COOK", Cookies.get('accessToken'))
         if(Cookies.get('accessToken') !== 'null') {
           oauth.getUser(Cookies.get('accessToken'))
           .then(data => {
