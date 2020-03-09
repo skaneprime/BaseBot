@@ -31,7 +31,7 @@ app.get('/login/callback', (req, res) => {
         console.log(data)
         let userAccessToken = data.access_token;
         res.cookie('accessToken', userAccessToken)
-        res.redirect(`http://localhost:3000`)
+        res.redirect(`http://localhost:5000`)
     }); 
 })
 
