@@ -21,8 +21,8 @@ app.use('/api/command', command)
 app.get('/login/callback', (req, res) => {
     console.log(req.query)
     oauth2.tokenRequest({
-        clientId: "676444288258801674",
-        clientSecret: "vnRZNOkiz5ZzAI9HO6UtDebc2ngAHH9S",
+        clientId: "644900662890463243",
+        clientSecret: "7H5KzNoK-hMIjvJz-CuQ9rwNa5FSgRuk",
         code: req.query.code,
         scope: "identify email guilds connections",
         grantType: "authorization_code",
