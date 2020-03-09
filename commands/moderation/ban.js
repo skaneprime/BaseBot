@@ -8,7 +8,7 @@ module.exports = class extends BaseCommand {
             category: "MODERATION",
             usage: "",
             description: "",
-            guildOnly: true, // только на сервере, ЛС не используется!
+            guildOnly: true,
             allowed_guilds: [],
             cooldown: 1,
             permLevel: 1
@@ -16,36 +16,36 @@ module.exports = class extends BaseCommand {
 
         this.execute = async (client, message, args, ...params) => {
             let target = await tools.findMember(message, args[0]);
-            if(!target) return message.reply(`Ошибка, укажите пользователя`)
-            let reason = "Нет причины";
+            if(!target) return message.reply(`Error, specify user`)
+            let reason = "No reason specified";
             if(args[1]) reason = args.slice(1);
             try {
-                target.ban(`Забанить пользователям ${message.author.tag}`).catch(error => message.reply(error.message));
+                target.ban(`Ban user ${message.author.tag}`).catch(error => message.reply(error.message));
                 let embed = new MessageEmbed({
                     fields: [{
-                        name: `Пользователь`,
+                        name: `User`,
                         value: `<@${target.user.id}>`,
                         inline: true
                     },
                     {
-                        name: `Администратор`,
+                        name: `Admin`,
                         value: `<@${message.author.id}>`,
                         inline: true
                     },
                     {
-                        name: `Причина`,
+                        name: `Reason`,
                         value: `${reason}`,
                         inline: true
                     },
                     ]
                 })
-                .setTitle(`Выгоняем пользователя ${target.user.tag}`)
+                .setTitle(`Banning user ${target.user.tag}`)
                 .setAuthor(message.author.tag, message.author.displayAvatarURL())
                 .setFooter(message.guild.name, message.guild.iconURL())
                 .setColor("#cc0000")
                 message.channel.send(embed);
             } catch (error) {
-                message.reply(`Ошибка, ${error.stack}`)
+                message.reply(`Error, ${error.stack}`)
             }
         }        
     };
