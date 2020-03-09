@@ -8,7 +8,7 @@ module.exports = class extends BaseCommand {
             category: "MODERATION",
             usage: "kick [username]",
             description: "Kick user",
-            guildOnly: true, // только на сервере, ЛС не используется!
+            guildOnly: true,
             allowed_guilds: [],
             cooldown: 1,
             permLevel: 1

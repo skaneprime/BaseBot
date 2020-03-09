@@ -66,9 +66,9 @@ module.exports = class HelpCommand extends BaseCommand {
                     else
                         msg = await msg.edit(embed);
 
-                    let ignore = 0; //для костылей фикса
+                    let ignore = 0; //Fixes
 
-                    if (categories[args[0]].length <= 10) // if less than 10 cmds we dont need make control
+                    if (categories[args[0]].length <= 10) // if less than 10 cmds we don't need make controller
                         return; 
 
                     if (status == true) { //if new message add reactions for control
@@ -88,7 +88,7 @@ module.exports = class HelpCommand extends BaseCommand {
                         if (ignore > 0) {
                             ignore--;
                             return;
-                        } //фикс бага когда бот ставит реакцию потом создает коллектор и считываеит её
+                        } // some bug's fix
 
                         //removing pressed by user emoji
                         msg.reactions.resolve('⏩').users.remove(user);
