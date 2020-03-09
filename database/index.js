@@ -22,7 +22,7 @@ module.exports = {
                 global.connection = conn;
                 cmd.sys(`${chalk.cyan.bold('[DATABASE]')} ${chalk.green.red('Mongoose')} ${chalk.green.bold('Connected')}!`)
             })
-            MongoClient.connect(url, function(err, connect) {
+            MongoClient.connect(url, options, function(err, connect) {
                 if(err) return cmd.error(err);
                 global.db = connect;
                 cmd.sys(`${chalk.cyan.bold('[DATABASE]')} ${chalk.green.red('MongoClient')} ${chalk.green.bold('Connected')}!`)
