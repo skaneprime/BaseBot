@@ -7,6 +7,8 @@ export default class FullTextChannel extends Component {
         super();
 
         this.channel = channel;
+        
+        this.messageData = {};
 
         this.embed = {
             title: null,
@@ -79,7 +81,7 @@ export default class FullTextChannel extends Component {
                         Object.keys(this.embed[key]).forEach((subKey, i) => {
                             // console.log(this.embed[key])
                             
-                            if(this.embed[key][subKey].value)
+                            if(this.embed[key][subKey] && this.embed[key][subKey].value)
                                 newEmbed[key][subKey] = this.embed[key][subKey].value
                         });
                     }
@@ -97,7 +99,8 @@ export default class FullTextChannel extends Component {
         }
         else
             axios.post(`http://localhost:5000/api/client/channel/send/${this.channel.id}`, { 
-                message: this.input.value
+                message: this.messageData.message.value,
+                attachment: this.messageData.attachment.value
             }) 
         e.preventDefault();
     }
@@ -126,6 +129,9 @@ export default class FullTextChannel extends Component {
         if(this.state.isEmbed) {
             MessageBox = (
                 <div>
+                    <hr />
+                    <h6 className="channel_message_param">Message Content: </h6>
+                    <TextAreaAutoSize onHeightChange={(height) => { console.log(height) } } maxLength="256" className="channel_message_param_input" type="text" placeholder="Message Content" onChange={(event) => this.handleOnChange(event, 'message')} />
                     <hr />
                     <h6 className="channel_message_param">Title: </h6>
                     <TextAreaAutoSize onHeightChange={(height) => { console.log(height) } } maxLength="256" className="channel_message_param_input" type="text" placeholder="Title of embed" onChange={(event) => this.handleOnChange(event, 'title')} />
@@ -166,10 +172,10 @@ export default class FullTextChannel extends Component {
                 <div>
                     <hr />
                     <h6 className="channel_message_param">Message: </h6>
-                    <input maxLength="256" className="channel_message_param_input" type="text" ref={(input) => this.input = input} />
+                    <input maxLength="256" className="channel_message_param_input" type="text" ref={(input) => this.messageData.message = input} />
                     <hr />
                     <h6 className="channel_message_param">Attachment: </h6>
-                    <input className="channel_message_param_input" type="file" ref={(input) => this.input = input} />
+                    <input className="channel_message_param_input" type="file" ref={(input) => this.messageData.attachment = input} />
                 </div>
             )
         }

@@ -1,44 +1,40 @@
 const { MessageEmbed } = require('discord.js');
 let BaseCommand = require('../../classes/BaseCommand');
+const fetch = require('node-fetch');
 module.exports = class extends BaseCommand {
     constructor() {
         super({
             name: "random",
-            aliases: ["rand", "r"],
+            aliases: ["rand"],
             category: "FUN",
             usage: `${client.prefix}random [min] [max]`,
             description: "Get a random number",
-            guildOnly: false, // только на сервере, ЛС не используется!
+            guildOnly: false,
             allowed_guilds: [],
-            cooldown: 5 // кулдаун
+            cooldown: 1
         });
 
         this.execute = async (client, message, args, ...params) => {
-            let a;
-            let b;
-            if (!args[0] || !args[1]) {
-                a = 1;
-                b = 100;
-            } else {
-                a = Number(args[0]);
-                b = Number(args[1]);
+            let range = []
+            range[0] = 1
+            range[1] = 100
+            if(args[1]){
+            args[0] = Number(args[0])
+            args[1] = Number(args[1])
+            if(!isNaN(args[0]) && !isNaN(args[1])){
+                range[0] = args[0] 
+                range[1] = args[1]    
             }
-            if (isNaN(a) || isNaN(b)) return bot.send("Wrong! Input numbers.");
-            let embedRoll = new MessageEmbed()
-                .setColor("#14151A")
-                .setTitle(`${random(a, b)}!`)
-                .setDescription(`Random number between ${a} and ${b}.`)
-                .setTimestamp(message.createdAt)
-                .setFooter(`Requested by ${message.author.username}.`);
-            message.channel.send(embedRoll);
-            function random(min, max){
-               min = Math.ceil(min);
-               max = Math.floor(max);
-               return Math.floor(Math.random() * (max - min + 1)) + min;
-             };
+        }
+            
+            let randomInt = tools.randomInt(range[0], range[1])
+            let embed = new MessageEmbed()
+            .setColor('RANDOM')
+            .setTitle(`**${randomInt}!**`)
+            .setDescription(`Random number from ${range[0]} to ${range[1]}`)
+            .setTimestamp()
+            .setFooter(message.author.username)
+            message.channel.send(embed);
         }
     };
 };
-
- 
-

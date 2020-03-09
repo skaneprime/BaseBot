@@ -12,6 +12,7 @@ import ErrorBoundary from './ErrorBoundary/index';
 import User from './User/index';
 import LoadingPage from './LoadingPage/index';
 import Header from './Header/index';
+import Docs from './Docs/index';
 import axios from 'axios';
 import DiscordOAuth2 from 'discord-oauth2';
 import Cookies from 'js-cookie';
@@ -22,7 +23,9 @@ function App() {
   const [MemberListLoading, setMemberListLoading] = useState(true)
   const [guilds, setGuilds] = useState([]);
   const [MemberPage, setMemberPage] = useState(0);
-  const observer = useRef()
+  const [AuthoredUser, setAuthoredUser] = useState(null);
+  const observer = useRef();
+  const oauth = new DiscordOAuth2();
   const LastMemberElementRef = useCallback(node => {
    // if(node == null) return console.log(`НОДЕЕЕЕЕ ТУТ: ${node}`)
     // setTimeout(() => {
@@ -60,7 +63,16 @@ function App() {
       try {
         let guilds = await getData('client/guilds/cache');
         setGuilds(guilds);
-        setLoading({ v: false, jsxv: `Maintance`, l: "loading", state: { i: 2, hex: "#bd8700" } });
+        console.log("COOK", Cookies.get('accessToken'))
+        if(Cookies.get('accessToken') !== 'null') {
+          oauth.getUser(Cookies.get('accessToken'))
+          .then(data => {
+            // console.log("data", data);
+            setAuthoredUser(data)
+            // setLoading({ v: false, jsxv: `Maintance`, l: "loading", state: { i: 2, hex: "#bd8700" } });
+            resolve({ v: false, jsxv: ``, l: "Ready", state: { i: 2, hex: "#4aff53" } });
+          });
+        } else resolve({ v: false, jsxv: ``, l: "Ready", state: { i: 2, hex: "#4aff53" } });
       } catch (err) {
         console.log(err)
         reject({ v: true, jsxv: `ERROR ${err.stack}`, l: "error", state: { i: 2, hex: "#D10000" }});
@@ -76,7 +88,7 @@ function App() {
   return (
     <Router>
       <ErrorBoundary>
-        <Header />
+        <Header AuthoredUser={AuthoredUser} />
         <Navigator />
         <br/>
         <Switch>
@@ -91,9 +103,12 @@ function App() {
           <Route path="/user">
             <User />
           </Route>
+          <Route path="/docs">
+            <Docs />
+          </Route>
           <Route>
-            <User />
-            {/* <MainPage /> */}
+            <User AuthoredUser={AuthoredUser} />
+            <MainPage />
           </Route>
         </Switch>
         <br/>

@@ -19,15 +19,18 @@ module.exports = class HelpCommand extends BaseCommand {
             let ticketOptions = server[0].options.tickets || null;
             if(ticketOptions) {
                 console.log(ticketOptions)
-                if(ticketOptions.mode == 2 || ticketOptions.mode == 0) return message.channel.send(`Ошибка, установлен режим тикетов: ${ticketOptions.mode}\n\n\`0\` - отключёно \n\`1\` - только команда \n\`2\` - только эмодзи\n\`3\` - эмодзи + команда`)
-                if(ticketOptions.channelID == 0) return message.channel.send(`У вас не настроен канал`);
-                if(ticketOptions.parentID == 0) return message.channel.send(`У вас не настроена категория для создания каналов`);
-                if(message.channel.id != ticketOptions.channelID) return message.channel.send(`Неправильный канал, создавать тикеты можно только в <#${ticketOptions.channelID}>`)
+                if(ticketOptions.mode == 2 || ticketOptions.mode == 0) 
+                    return message.channel.send(`Error, Ticket Mode is: ${ticketOptions.mode}\n\n\`0\` - disabled \n\`1\` - only command \n\`2\` - only emoji\n\`3\` - emoji and command`)
+                if(ticketOptions.channelID == 0) 
+                    return message.channel.send(`Channel is not specified`);
+                if(ticketOptions.parentID == 0) 
+                    return message.channel.send(`Parent channel is not specified`);
+                if(message.channel.id != ticketOptions.channelID) return message.channel.send(`Wrong channel, tickets can be created at <#${ticketOptions.channelID}>`)
                 if(!ticketOptions.limit) ticketOptions.limit = 999;
                 let TicketSchema = require(`${appDir}/database/model/ticket`)
                 let tickets = await TicketSchema.find({authorID: message.author.id});
                 let limitEmbed = new Discord.MessageEmbed()
-                    .setDescription(`Вы не можете создавать > ${ticketOptions.limit} тикетов`)
+                    .setDescription(`You can't create more than ${ticketOptions.limit} tickets`)
                     .setColor("#FF0000")
                 if(tickets.length > ticketOptions.limit) return message.author.send(limitEmbed)
                 try {
@@ -41,10 +44,10 @@ module.exports = class HelpCommand extends BaseCommand {
                             type: 'default'
                         })
                         Ticket.save();
-                        let successEmbed = new Discord.MessageEmbed().setDescription(`Тикет успешно создан, переход в тикет: <#${channel.id}>`).setColor("#00FF00");
+                        let successEmbed = new Discord.MessageEmbed().setDescription(`Ticket was created successfully : <#${channel.id}>`).setColor("#00FF00");
                         message.author.send(successEmbed);
                         let infoEmbed = new Discord.MessageEmbed()
-                            .setDescription(`Получен новый тикет от ${message.author}\n${message.createdAt}\nВся переписка сохраняется!!!`)
+                            .setDescription(`Received new ticket from ${message.author}\n${message.createdAt}\nAll dialogues are saved!!!`)
                             .setColor("#FFF")
                         channel.send(infoEmbed)
                     })
@@ -53,7 +56,7 @@ module.exports = class HelpCommand extends BaseCommand {
                 }
 
             } else {
-                return message.reply(`На сервере не настроенный параметры`)
+                return message.reply(`Guild settings are not specified.`)
             }
         };
     };

@@ -7,7 +7,9 @@ TestSS.set('f3', { t:3 });
 TestSS.set('f4', { t:4 });
 TestSS.set('f5', { t:5 });
 
-// console.log(TestSS)
+console.log(TestSS)
+console.log("--------------------------------------");
+console.log("--------------------------------------");
 console.log("--------------------------------------");
 for(i = 1; i < 6; i++)
     if(TestSS.toChunks(i)) {

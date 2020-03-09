@@ -1,5 +1,4 @@
 module.exports = async (req, res, urlArray) => {
-    let data = {};
     let channelOptions = req.body;
     if(urlArray[2] === "example") return res.json({
         name: "example",

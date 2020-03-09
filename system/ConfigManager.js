@@ -35,8 +35,8 @@ let cfText = (key) => {
     return c[key];
 };
 if(!isConfFolderExist()) { // If there's no config folder 
-    createConfFolder(); // создаем папку с конфигами
-    createConfig(); // создаём конфиги
+    createConfFolder(); // Creating a config folder
+    createConfig(); // creating config
 };
 
 global.config = {}; // creating global var config
@@ -44,8 +44,8 @@ readdirSync('./configuration').forEach(InitConfig); // Init config
 
 
 function InitConfig(file) {
-    global.cmd.sys(require('chalk').red.bold('[СonfigManager]'), `Loading ${require('chalk').bold.yellow.italic(file)}!`); // пишем в консоль логи
-    global.config[file.split('.')[0]] = JSON.parse(readFileSync(`./configuration/${file}`)); // инициализируем конфиг
+    cmd.sys(require('chalk').red.bold('[СonfigManager]'), `Loading ${require('chalk').bold.yellow.italic(file)}!`);
+    config[file.split('.')[0]] = JSON.parse(readFileSync(`./configuration/${file}`)); // init config
 };
 
 // Main Funcs if config not exist

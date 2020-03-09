@@ -1,4 +1,4 @@
-let userScheme = new mongoose.Schema({
+let userScheme = new mongoose.Schema({ // Old.
     username: String,
     userID: Number,
     permLevel: Number

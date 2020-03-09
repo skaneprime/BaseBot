@@ -48,7 +48,7 @@ export default class index extends Component {
 
         if(this.state.guilds.length < 1)
             GuildList = (
-                <p>No Guilds! Add bot to the Guilds!</p>
+                <a style={{ color: "#fff", textDecoration: "none" }} href="https://discordapp.com/api/oauth2/authorize?client_id=679279721145565195&permissions=8&scope=bot">Add Bot You Server!</a>
             )
         return (
             <div className="container">

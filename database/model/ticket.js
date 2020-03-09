@@ -1,4 +1,4 @@
-let ticketSchema = new mongoose.Schema({
+let ticketSchema = new mongoose.Schema({ // Old.
     _id: Number,
     channelID: Number,
     authorID: Number,
