@@ -36,12 +36,11 @@ app.get('/login/callback', (req, res) => {
 })
 
 
-app.use(express.static('./react-app/build'));
+app.use(express.static(__dirname + '/build'));
 
-// Handle SPA
+// Handle App
 app.get(/.*/, (req, res) => {
-    // console.log('Test')
-    res.sendFile('./react-app/build/index.html')
+    res.sendFile(__dirname + '/build/index.html')
 });
 
 const port = 5000;
